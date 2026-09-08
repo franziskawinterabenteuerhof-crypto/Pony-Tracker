@@ -1,0 +1,2791 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pony-Tracker</title>
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIlBvbnktVHJhY2tlciBcdTIwMTQgQWJlbnRldWVyaG9mIEZyZWlidXJnIiwgInNob3J0X25hbWUiOiAiUG9ueS1UcmFja2VyIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNGM0Y0RjYiLCAidGhlbWVfY29sb3IiOiAiIzFFMzY1NCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBeE9USWdNVGt5SWo0S0lDQThjbVZqZENCM2FXUjBhRDBpTVRreUlpQm9aV2xuYUhROUlqRTVNaUlnY25nOUlqUXdJaUJtYVd4c1BTSWpNVVV6TmpVMElpOCtDaUFnUEhCaGRHZ2daRDBpVFRrMklEUXdJRU0zTUNBME1DQTFNaUEyTWlBMU1pQTVNaUJETlRJZ01UQTRJRFU0SURFeU1DQTJPQ0F4TXpBZ1REWTJJREUxTWlCRE5qVWdNVFUySURZNElERTJNQ0EzTWlBeE5qQWdURGd5SURFMk1DQkRPRFVnTVRZd0lEZzRJREUxT0NBNE9TQXhOVFVnVERrMUlERXpPQ0JNTVRBeElERTFOU0JETVRBeUlERTFPQ0F4TURVZ01UWXdJREV3T0NBeE5qQWdUREV4T0NBeE5qQWdRekV5TWlBeE5qQWdNVEkxSURFMU5pQXhNalFnTVRVeUlFd3hNaklnTVRNd0lFTXhNeklnTVRJd0lERXpPQ0F4TURnZ01UTTRJRGt5SUVNeE16Z2dOaklnTVRJd0lEUXdJRGsySURRd0lGb2lJR1pwYkd3OUlpTkdSa1pHUmtZaUx6NEtJQ0E4WTJseVkyeGxJR040UFNJNE1pSWdZM2s5SWpnMklpQnlQU0kzSWlCbWFXeHNQU0lqTVVVek5qVTBJaTgrQ2lBZ1BHTnBjbU5zWlNCamVEMGlNVEV3SWlCamVUMGlPRFlpSUhJOUlqY2lJR1pwYkd3OUlpTXhSVE0yTlRRaUx6NEtQQzl6ZG1jK0NnPT0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhacFpYZENiM2c5SWpBZ01DQXhPVElnTVRreUlqNEtJQ0E4Y21WamRDQjNhV1IwYUQwaU1Ua3lJaUJvWldsbmFIUTlJakU1TWlJZ2NuZzlJalF3SWlCbWFXeHNQU0lqTVVVek5qVTBJaTgrQ2lBZ1BIQmhkR2dnWkQwaVRUazJJRFF3SUVNM01DQTBNQ0ExTWlBMk1pQTFNaUE1TWlCRE5USWdNVEE0SURVNElERXlNQ0EyT0NBeE16QWdURFkySURFMU1pQkROalVnTVRVMklEWTRJREUyTUNBM01pQXhOakFnVERneUlERTJNQ0JET0RVZ01UWXdJRGc0SURFMU9DQTRPU0F4TlRVZ1REazFJREV6T0NCTU1UQXhJREUxTlNCRE1UQXlJREUxT0NBeE1EVWdNVFl3SURFd09DQXhOakFnVERFeE9DQXhOakFnUXpFeU1pQXhOakFnTVRJMUlERTFOaUF4TWpRZ01UVXlJRXd4TWpJZ01UTXdJRU14TXpJZ01USXdJREV6T0NBeE1EZ2dNVE00SURreUlFTXhNemdnTmpJZ01USXdJRFF3SURrMklEUXdJRm9pSUdacGJHdzlJaU5HUmtaR1JrWWlMejRLSUNBOFkybHlZMnhsSUdONFBTSTRNaUlnWTNrOUlqZzJJaUJ5UFNJM0lpQm1hV3hzUFNJak1VVXpOalUwSWk4K0NpQWdQR05wY21Oc1pTQmplRDBpTVRFd0lpQmplVDBpT0RZaUlISTlJamNpSUdacGJHdzlJaU14UlRNMk5UUWlMejRLUEM5emRtYytDZz09IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIn1dfQ==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj4KICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjQwIiBmaWxsPSIjMUUzNjU0Ii8+CiAgPHBhdGggZD0iTTk2IDQwIEM3MCA0MCA1MiA2MiA1MiA5MiBDNTIgMTA4IDU4IDEyMCA2OCAxMzAgTDY2IDE1MiBDNjUgMTU2IDY4IDE2MCA3MiAxNjAgTDgyIDE2MCBDODUgMTYwIDg4IDE1OCA4OSAxNTUgTDk1IDEzOCBMMTAxIDE1NSBDMTAyIDE1OCAxMDUgMTYwIDEwOCAxNjAgTDExOCAxNjAgQzEyMiAxNjAgMTI1IDE1NiAxMjQgMTUyIEwxMjIgMTMwIEMxMzIgMTIwIDEzOCAxMDggMTM4IDkyIEMxMzggNjIgMTIwIDQwIDk2IDQwIFoiIGZpbGw9IiNGRkZGRkYiLz4KICA8Y2lyY2xlIGN4PSI4MiIgY3k9Ijg2IiByPSI3IiBmaWxsPSIjMUUzNjU0Ii8+CiAgPGNpcmNsZSBjeD0iMTEwIiBjeT0iODYiIHI9IjciIGZpbGw9IiMxRTM2NTQiLz4KPC9zdmc+Cg==">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj4KICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjQwIiBmaWxsPSIjMUUzNjU0Ii8+CiAgPHBhdGggZD0iTTk2IDQwIEM3MCA0MCA1MiA2MiA1MiA5MiBDNTIgMTA4IDU4IDEyMCA2OCAxMzAgTDY2IDE1MiBDNjUgMTU2IDY4IDE2MCA3MiAxNjAgTDgyIDE2MCBDODUgMTYwIDg4IDE1OCA4OSAxNTUgTDk1IDEzOCBMMTAxIDE1NSBDMTAyIDE1OCAxMDUgMTYwIDEwOCAxNjAgTDExOCAxNjAgQzEyMiAxNjAgMTI1IDE1NiAxMjQgMTUyIEwxMjIgMTMwIEMxMzIgMTIwIDEzOCAxMDggMTM4IDkyIEMxMzggNjIgMTIwIDQwIDk2IDQwIFoiIGZpbGw9IiNGRkZGRkYiLz4KICA8Y2lyY2xlIGN4PSI4MiIgY3k9Ijg2IiByPSI3IiBmaWxsPSIjMUUzNjU0Ii8+CiAgPGNpcmNsZSBjeD0iMTEwIiBjeT0iODYiIHI9IjciIGZpbGw9IiMxRTM2NTQiLz4KPC9zdmc+Cg==">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pony-Tracker">
+<meta name="theme-color" content="#1E3654">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F0F2F5;
+    --surface: #FFFFFF;
+    --surface-alt: #F6F7F9;
+    --border: #E1E5EA;
+    --border-strong: #C6CCD4;
+    --text: #12161D;
+    --text-secondary: #565F6D;
+    --text-tertiary: #868FA0;
+
+    --navy: #1A2E4C;
+    --navy-hover: #12213A;
+    --navy-tint: #E7EBF3;
+    --navy-light: #33507A;
+
+    --teal: #146560;
+    --teal-tint: #DEEEEC;
+
+    --brick: #8A362E;
+    --brick-tint: #F4E3E0;
+
+    --amber: #8C5E17;
+    --amber-tint: #F5E9D1;
+
+    --slate: #454E5C;
+    --slate-tint: #E7E9EC;
+
+    --s1: #2A7D52;
+    --s2: #698A46;
+    --s3: #A9822A;
+    --s4: #B36329;
+    --s5: #8A362E;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --shadow-xs: 0 1px 2px rgba(18, 22, 29, 0.04);
+    --shadow-sm: 0 1px 3px rgba(18, 22, 29, 0.06), 0 1px 2px rgba(18, 22, 29, 0.04);
+    --shadow-md: 0 4px 12px rgba(18, 22, 29, 0.08), 0 2px 4px rgba(18, 22, 29, 0.05);
+    --shadow-lg: 0 12px 32px rgba(18, 22, 29, 0.14), 0 4px 10px rgba(18, 22, 29, 0.07);
+
+    --font-display: 'Inter', -apple-system, "Segoe UI", sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, "SF Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0;
+    font-family: var(--font-display);
+    background: var(--bg);
+    color: var(--text);
+    padding: 0 0 48px 0;
+    line-height: 1.4;
+  }
+  .shell { max-width: 640px; margin: 0 auto; padding: 0 18px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    background: linear-gradient(155deg, var(--navy) 0%, var(--navy-hover) 100%);
+    color: #fff;
+    padding: 22px 18px 20px 18px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+  }
+  .topbar::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  .topbar-inner { max-width: 640px; margin: 0 auto; }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #91A6C2;
+    margin-bottom: 7px;
+    font-weight: 600;
+  }
+  .topbar h1 {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .topbar .sub {
+    font-size: 12.5px;
+    color: #AEBED6;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .loading { text-align: center; padding: 70px 0; color: var(--text-tertiary); font-size: 14px; }
+
+  .warn-banner {
+    background: var(--amber-tint);
+    color: var(--amber);
+    border: 1px solid #E6D2A0;
+    padding: 11px 13px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .ack-banner {
+    background: var(--brick-tint);
+    border: 1px solid var(--brick);
+    border-left: 4px solid var(--brick);
+    border-radius: var(--radius-md);
+    padding: 14px 15px 6px 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .ack-banner-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--brick);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .ack-item {
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    padding: 11px 12px;
+    margin-bottom: 8px;
+    box-shadow: var(--shadow-xs);
+  }
+  .ack-item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .ack-item-pony { font-weight: 700; font-size: 14px; color: var(--text); }
+  .ack-item-date { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); flex: 0 0 auto; }
+  .ack-item-note { font-size: 13.5px; color: var(--text); margin-top: 3px; line-height: 1.4; }
+  .ack-item-expiry { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; font-family: var(--font-mono); }
+  .ack-item-btn {
+    margin-top: 9px;
+    background: var(--brick);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 7px 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font-display);
+    box-shadow: var(--shadow-xs);
+    transition: background 0.12s ease;
+  }
+  .ack-item-btn:hover { background: #712C25; }
+
+  .ack-status {
+    font-size: 11.5px;
+    color: var(--teal);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  .sync-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .sync-status { font-family: var(--font-display); font-size: 11px; color: var(--text-tertiary); }
+  .sync-status.stale { color: var(--amber); }
+  .sync-refresh {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    font-family: var(--font-display);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.15s ease, transform 0.1s ease, background 0.15s ease;
+  }
+  .sync-refresh:hover { background: var(--navy-tint); box-shadow: var(--shadow-sm); }
+  .sync-refresh:active { transform: translateY(1px); }
+  .sync-refresh:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
+
+  .save-status {
+    font-size: 11.5px; margin-top: 9px; text-align: center; min-height: 15px;
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+  .save-status.saving { color: var(--text-tertiary); }
+  .save-status.ok { color: var(--teal); }
+  .save-status.error { color: var(--brick); }
+
+  /* ---------- Section label ---------- */
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin: 26px 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ---------- Status strip (home) ---------- */
+  .status-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .status-cell { background: var(--surface); padding: 16px 14px 14px 14px; }
+  .status-num {
+    font-family: var(--font-mono);
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .status-num.alert { color: var(--brick); }
+  .status-num.ok { color: var(--teal); }
+  .status-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 7px;
+    letter-spacing: 0.005em;
+    font-weight: 500;
+  }
+
+  /* ---------- Folder rows ---------- */
+  .folder-list { display: flex; flex-direction: column; gap: 11px; }
+  .folder-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    padding: 16px 17px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease, transform 0.12s ease, border-color 0.12s ease;
+  }
+  .folder-row:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .folder-row:active { transform: translateY(0px); }
+  .folder-row.movement { border-left-color: var(--teal); }
+  .folder-row.health { border-left-color: var(--brick); }
+  .folder-row.info { border-left-color: var(--slate); }
+  .folder-mark {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+  }
+  .folder-mark.movement { background: var(--teal); }
+  .folder-mark.health { background: var(--brick); }
+  .folder-mark.info { background: var(--slate); }
+  .folder-body { flex: 1; min-width: 0; }
+  .folder-title { font-size: 15px; font-weight: 700; letter-spacing: -0.006em; }
+  .folder-sub { font-size: 12.5px; color: var(--text-secondary); margin-top: 3px; }
+  .folder-names {
+    font-family: var(--font-display);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .folder-chevron { color: var(--text-tertiary); font-size: 17px; font-weight: 700; flex: 0 0 auto; transition: transform 0.15s ease; }
+  .folder-row:hover .folder-chevron { transform: translateX(2px); color: var(--navy); }
+
+  .manage-link {
+    width: 100%;
+    padding: 12px;
+    background: var(--surface);
+    color: var(--navy);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 22px;
+    font-family: var(--font-display);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .manage-link:hover { background: var(--navy-tint); box-shadow: var(--shadow-sm); }
+
+  /* ---------- Pony rows (list screens) ---------- */
+  .pony-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .pony-row {
+    background: var(--surface);
+    padding: 14px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.12s ease;
+  }
+  .pony-row:hover { background: var(--surface-alt); }
+  .pony-main { flex: 1; min-width: 0; }
+  .pony-name { font-weight: 700; font-size: 14.5px; letter-spacing: -0.003em; }
+  .pony-status {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pony-status.missing { color: var(--brick); font-weight: 600; }
+  .load-badge {
+    min-width: 32px; height: 28px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 13px;
+    flex: 0 0 auto;
+    box-shadow: var(--shadow-xs);
+  }
+  .load-badge.none { background: var(--surface-alt); color: var(--text-tertiary); border: 1px solid var(--border); font-size: 11px; box-shadow: none; }
+  .health-mark { width: 28px; height: 28px; border-radius: var(--radius-sm); background: var(--brick-tint); color: var(--brick); display:flex; align-items:center; justify-content:center; font-family: var(--font-mono); font-size: 11px; font-weight: 700; flex: 0 0 auto; }
+  .chevron { color: var(--text-tertiary); font-size: 15px; font-weight: 700; flex: 0 0 auto; }
+
+  .back-link {
+    background: none;
+    border: none;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 0 12px 0;
+    font-family: var(--font-display);
+    transition: opacity 0.12s ease;
+  }
+  .back-link:hover { opacity: 0.7; }
+  .back-link::before { content: '← '; }
+  .detail-header { font-size: 20px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 3px; }
+  .detail-sub {
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    letter-spacing: 0.01em;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  /* ---------- Cards / forms ---------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 19px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  label {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--text-secondary);
+    margin-bottom: 7px;
+    margin-top: 16px;
+  }
+  label:first-child { margin-top: 0; }
+  input[type="text"], input[type="date"], textarea, select {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: var(--font-display);
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3.5px var(--navy-tint);
+  }
+  textarea { resize: vertical; min-height: 48px; }
+
+  .chip-row { display: flex; gap: 7px; flex-wrap: wrap; }
+  .chip {
+    flex: 1;
+    min-width: 88px;
+    padding: 10px 8px;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease, transform 0.08s ease;
+  }
+  .chip:hover { border-color: var(--navy-light); }
+  .chip.selected { background: var(--navy); color: #fff; border-color: var(--navy); box-shadow: var(--shadow-sm); }
+  .chip:active { transform: scale(0.97); }
+
+  .scale-buttons { display: flex; gap: 6px; }
+  .scale-btn {
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border-strong);
+    background: var(--surface);
+    cursor: pointer;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease, transform 0.08s ease;
+  }
+  .scale-btn:active { transform: scale(0.95); }
+  .scale-btn[data-val="1"].selected { background: var(--s1); color: #fff; border-color: var(--s1); box-shadow: var(--shadow-sm); }
+  .scale-btn[data-val="2"].selected { background: var(--s2); color: #fff; border-color: var(--s2); box-shadow: var(--shadow-sm); }
+  .scale-btn[data-val="3"].selected { background: var(--s3); color: #fff; border-color: var(--s3); box-shadow: var(--shadow-sm); }
+  .scale-btn[data-val="4"].selected { background: var(--s4); color: #fff; border-color: var(--s4); box-shadow: var(--shadow-sm); }
+  .scale-btn[data-val="5"].selected { background: var(--s5); color: #fff; border-color: var(--s5); box-shadow: var(--shadow-sm); }
+
+  .submit-btn {
+    margin-top: 18px;
+    width: 100%;
+    padding: 13px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.008em;
+    cursor: pointer;
+    font-family: var(--font-display);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease, background 0.15s ease, transform 0.08s ease;
+  }
+  .submit-btn:hover { background: var(--navy-hover); box-shadow: var(--shadow-md); }
+  .submit-btn:active { transform: translateY(1px); box-shadow: var(--shadow-xs); }
+
+  .toggle-details {
+    background: none;
+    border: none;
+    color: var(--navy);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 11px 0 0 0;
+    text-align: left;
+    font-family: var(--font-display);
+  }
+  .toggle-details:hover { text-decoration: underline; }
+  .extra-fields { display: none; }
+  .extra-fields.open { display: block; }
+
+  /* ---------- Entry history ---------- */
+  .entry-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .entry { background: var(--surface); padding: 13px 15px; transition: background 0.12s ease; }
+  .entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-tertiary);
+    margin-bottom: 7px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .tag-group { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 5px; }
+  .tag {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: var(--radius-sm);
+    background: var(--navy-tint);
+    color: var(--navy);
+    font-family: var(--font-display);
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: var(--shadow-xs);
+  }
+  .entry-note { font-size: 13.5px; line-height: 1.5; margin-top: 4px; color: var(--text); }
+  .entry-photo { max-width: 170px; border-radius: var(--radius-sm); margin-top: 9px; display: block; border: 1px solid var(--border-strong); box-shadow: var(--shadow-xs); }
+  .entry-meta { font-size: 11.5px; color: var(--text-tertiary); margin-top: 7px; display: flex; justify-content: space-between; align-items: center; }
+
+  .reaction-bar { display: flex; gap: 6px; margin-top: 9px; }
+  .reaction-btn {
+    background: var(--surface-alt);
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: var(--font-display);
+    transition: background 0.12s ease, border-color 0.12s ease, transform 0.08s ease;
+  }
+  .reaction-btn:hover { border-color: var(--navy-light); }
+  .reaction-btn:active { transform: scale(0.95); }
+  .reaction-btn.active { background: var(--navy-tint); border-color: var(--navy); color: var(--navy); }
+
+  .voice-row { display: flex; align-items: center; gap: 10px; }
+  .voice-btn {
+    background: var(--surface);
+    border: 1.5px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 9px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    font-family: var(--font-display);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.12s ease, background 0.12s ease;
+  }
+  .voice-btn:hover { background: var(--navy-tint); }
+  .voice-btn.stop { background: var(--brick); color: #fff; border-color: var(--brick); animation: pulse-rec 1.4s infinite; }
+  @keyframes pulse-rec { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+  .voice-timer { font-family: var(--font-mono); font-size: 13px; color: var(--brick); font-weight: 700; }
+  .voice-preview { margin-top: 10px; }
+  .voice-frame { width: 100%; height: 54px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+  .voice-player { width: 100%; height: 54px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); margin-top: 8px; }
+
+  .comment-section { margin-top: 10px; }
+  .comment-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+  .comment-item {
+    background: var(--surface-alt);
+    border-radius: var(--radius-sm);
+    padding: 7px 10px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .comment-author { font-weight: 700; color: var(--navy); }
+  .comment-add-row { display: flex; gap: 7px; }
+  .comment-input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: var(--font-display);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .comment-input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--navy-tint); }
+  .comment-send-btn {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font-display);
+    flex: 0 0 auto;
+  }
+  .comment-send-btn:hover { background: var(--navy-hover); }
+  .entry-actions { display: flex; gap: 12px; }
+
+  .shop-item { display: flex; align-items: flex-start; gap: 11px; }
+  .shop-check {
+    width: 20px; height: 20px; margin-top: 1px; flex: 0 0 auto; cursor: pointer; accent-color: var(--navy);
+  }
+  .shop-body { flex: 1; min-width: 0; }
+  .shop-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .shop-name.done { text-decoration: line-through; color: var(--text-tertiary); font-weight: 500; }
+  .shop-note { font-size: 12.5px; color: var(--text-secondary); margin-top: 3px; }
+
+  .chip.role-team.selected { background: var(--brick); border-color: var(--brick); }
+  .chip.role-ehrenamt.selected { background: var(--teal); border-color: var(--teal); }
+
+  .entry.team-entry {
+    border-left: 4px solid var(--brick);
+    background: var(--brick-tint);
+    padding-left: 12px;
+  }
+  .role-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .role-badge.team { background: var(--brick); color: #fff; box-shadow: var(--shadow-xs); }
+  .role-badge.ehrenamt { background: var(--surface-alt); color: var(--text-secondary); }
+  .delete-btn { background: none; border: none; color: var(--text-tertiary); cursor: pointer; font-size: 11px; font-family: var(--font-display); font-weight: 500; }
+  .edit-btn { background: none; border: none; color: var(--navy); cursor: pointer; font-size: 11px; font-family: var(--font-display); font-weight: 600; }
+  .delete-btn:hover { color: var(--brick); }
+  .edit-btn:hover, .delete-btn:hover { text-decoration: underline; }
+  .empty-state { text-align: center; color: var(--text-tertiary); padding: 30px 0; font-size: 13px; background: var(--surface); }
+
+  .chart-wrap { display: flex; align-items: flex-end; gap: 6px; height: 92px; padding-top: 8px; }
+  .chart-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+  .chart-bar { width: 100%; max-width: 26px; border-radius: 3px 3px 0 0; }
+  .chart-bar-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+  }
+  .chart-bar-val {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .week-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .week-nav-btn {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    width: 30px; height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    cursor: pointer;
+    flex: 0 0 auto;
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.12s ease, background 0.12s ease;
+  }
+  .week-nav-btn:hover { background: var(--navy-tint); box-shadow: var(--shadow-sm); }
+  .week-nav-label {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .week-nav-today {
+    background: var(--navy-tint);
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    border-radius: var(--radius-sm);
+    padding: 5px 11px;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: var(--font-display);
+    transition: background 0.12s ease;
+  }
+  .week-nav-today:hover { background: #DCE4F0; }
+
+  .week-days { display: flex; gap: 5px; margin-bottom: 14px; }
+  .week-day {
+    flex: 1;
+    text-align: center;
+    padding: 9px 2px 8px 2px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-alt);
+    position: relative;
+  }
+  .week-day.done { background: var(--teal-tint); border-color: var(--teal); }
+  .week-day.is-today { border: 2px solid var(--navy); padding: 8px 1px 7px 1px; box-shadow: var(--shadow-xs); }
+  .week-day-num {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-top: 1px;
+  }
+  .week-day.is-today .week-day-num { color: var(--navy); }
+  .week-day-label {
+    font-family: var(--font-display);
+    font-size: 10.5px;
+    color: var(--text-tertiary);
+    font-weight: 600;
+  }
+  .week-day.done .week-day-label { color: var(--teal); }
+  .week-day-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin: 6px auto 0 auto;
+    background: var(--border-strong);
+  }
+  .week-day.done .week-day-dot { background: var(--teal); }
+  .week-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+  .week-stat-num {
+    font-family: var(--font-mono);
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .week-stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 5px; font-weight: 500; }
+
+  .week-table { border-collapse: collapse; width: 100%; min-width: 640px; }
+  .week-table th, .week-table td {
+    border: 1px solid var(--border);
+    padding: 7px 9px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .week-table th {
+    background: var(--surface-alt);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .week-table th.day-col {
+    text-align: left;
+    background: var(--surface);
+  }
+  .week-table td.day-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: var(--surface-alt);
+    white-space: nowrap;
+  }
+  .week-table td.day-label.is-today {
+    background: var(--navy-tint);
+    color: var(--navy);
+    border-left: 3px solid var(--navy);
+  }
+  .week-table td.cell {
+    font-size: 11px;
+    line-height: 1.3;
+    min-width: 96px;
+    padding: 5px;
+    background: var(--surface);
+  }
+  .week-table td.cell.empty {
+    background: var(--surface);
+    color: var(--text-tertiary);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    min-width: 96px;
+  }
+  .cell-entry {
+    color: #fff;
+    border-radius: var(--radius-sm);
+    padding: 4px 7px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+  .cell-entry:last-child { margin-bottom: 0; }
+  .cell-entry-val {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 10px;
+    flex: 0 0 auto;
+  }
+
+  .rename-row { display: flex; gap: 8px; align-items: center; margin-bottom: 11px; }
+  .rename-row input[type="text"] { flex: 1; }
+  .avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+    border: 1.5px solid var(--border-strong);
+    box-shadow: var(--shadow-xs);
+  }
+  .avatar-placeholder {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--navy-tint);
+    color: var(--navy);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+  .avatar-lg {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--border-strong);
+    margin-bottom: 9px;
+    box-shadow: var(--shadow-sm);
+  }
+  .photo-upload-row { display: flex; align-items: center; gap: 10px; }
+  .photo-upload-row input[type="file"] { font-size: 11px; flex: 1; }
+  .icon-btn {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 10px 13px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-display);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.12s ease, background 0.12s ease;
+  }
+  .icon-btn:hover { background: var(--navy-hover); box-shadow: var(--shadow-sm); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="eyebrow">Abenteuerhof Freiburg</div>
+    <h1>Pony-Tracker</h1>
+    <div class="sub">Bewegung & Gesundheit je Pony</div>
+  </div>
+</div>
+
+<div class="shell">
+
+<div id="loading" class="loading">Lade Daten …</div>
+
+<!-- HOME -->
+<div id="homeScreen" style="display:none;">
+  <div id="teamAlertBanner"></div>
+  <div class="sync-row">
+    <span id="syncStatus" class="sync-status">Aktualisiert: –</span>
+    <button id="refreshBtn" class="sync-refresh">↻ Aktualisieren</button>
+  </div>
+  <div class="status-strip">
+    <div class="status-cell">
+      <div class="status-num ok" id="statHealth">–</div>
+      <div class="status-label">Gesundheitsmeldungen heute</div>
+    </div>
+    <div class="status-cell">
+      <div class="status-num" id="statInfos">–</div>
+      <div class="status-label">aktuelle Hinweise</div>
+    </div>
+  </div>
+
+  <div class="section-label">Bereiche</div>
+  <div class="folder-list">
+    <div class="folder-row movement" id="openBewegung">
+      <div class="folder-mark movement"></div>
+      <div class="folder-body">
+        <div class="folder-title">Bewegung</div>
+        <div class="folder-sub" id="bewegungSummary">…</div>
+        <div class="folder-names" id="bewegungNames"></div>
+      </div>
+      <div class="folder-chevron">›</div>
+    </div>
+    <div class="folder-row health" id="openGesundheit">
+      <div class="folder-mark health"></div>
+      <div class="folder-body">
+        <div class="folder-title">Gesundheit</div>
+        <div class="folder-sub" id="gesundheitSummary">…</div>
+        <div class="folder-names" id="gesundheitNames"></div>
+      </div>
+      <div class="folder-chevron">›</div>
+    </div>
+    <div class="folder-row info" id="openInfos">
+      <div class="folder-mark info"></div>
+      <div class="folder-body">
+        <div class="folder-title">Allgemeine Infos</div>
+        <div class="folder-sub" id="infosSummary">…</div>
+      </div>
+      <div class="folder-chevron">›</div>
+    </div>
+  </div>
+  <button class="manage-link" id="manageBtn">Ponys verwalten — umbenennen / hinzufügen</button>
+</div>
+
+<!-- LIST -->
+<div id="listScreen" style="display:none;">
+  <button class="back-link" id="listBackBtn">Übersicht</button>
+  <div class="detail-header" id="listHeader"></div>
+  <div class="detail-sub" id="listSub">Pony auswählen</div>
+  <button class="manage-link" id="openWeekTable" style="display:none; margin-bottom:14px;">Wochenübersicht — alle Ponys</button>
+  <div class="pony-list" id="listGrid"></div>
+</div>
+
+<!-- WOCHENTABELLE -->
+<div id="weekTableScreen" style="display:none;">
+  <button class="back-link" id="weekTableBackBtn">Bewegung — Ponyliste</button>
+  <div class="detail-header">Wochenübersicht</div>
+  <div class="detail-sub">Alle Ponys</div>
+  <div id="weekTableNav"></div>
+  <div class="card" style="overflow-x:auto; padding:10px;">
+    <table class="week-table" id="weekTable"></table>
+  </div>
+</div>
+
+<!-- MANAGE -->
+<div id="manageScreen" style="display:none;">
+  <button class="back-link" id="manageBackBtn">Übersicht</button>
+  <div class="detail-header">Ponys verwalten</div>
+  <div class="detail-sub">Stammdaten</div>
+  <div class="card" id="ponyManage"></div>
+</div>
+
+<!-- BEWEGUNG DETAIL -->
+<div id="bewegungDetailScreen" style="display:none;">
+  <button class="back-link" id="belDetailBackBtn">Bewegung — Ponyliste</button>
+  <div id="belDetailAvatar"></div>
+  <div class="detail-header" id="belDetailHeader"></div>
+  <div class="detail-sub">Bewegungserfassung</div>
+
+  <div class="card">
+    <label>Kontext</label>
+    <div class="chip-row" id="belKontext">
+      <div class="chip" data-val="Ehrenamt">Ehrenamt</div>
+      <div class="chip" data-val="Ponygruppen">Ponygruppen</div>
+      <div class="chip" data-val="Therapiereiten">Therapiereiten</div>
+      <div class="chip" data-val="Bildungsprojekt">Bildungsprojekt</div>
+    </div>
+
+    <div id="belGruppeSection" style="display:none;">
+      <label>Ponygruppe</label>
+      <div class="chip-row" id="belGruppeChips">
+        <div class="chip" data-val="Ponybande">Ponybande</div>
+        <div class="chip" data-val="Gruppe 1">Gruppe 1</div>
+        <div class="chip" data-val="Gruppe 2">Gruppe 2</div>
+      </div>
+    </div>
+
+    <label>Aktivität</label>
+    <div class="chip-row" id="belAktivitaet">
+      <div class="chip" data-val="Geführt">Geführt</div>
+      <div class="chip" data-val="Geritten">Geritten</div>
+    </div>
+
+    <label>Ort</label>
+    <div class="chip-row" id="belOrt">
+      <div class="chip" data-val="Platz">Platz</div>
+      <div class="chip" data-val="Draußen">Draußen</div>
+    </div>
+
+    <label>Anstrengung — 1 niedrig, 5 sehr hoch</label>
+    <div class="scale-buttons" id="belScale">
+      <div class="scale-btn" data-val="1">1</div>
+      <div class="scale-btn" data-val="2">2</div>
+      <div class="scale-btn" data-val="3">3</div>
+      <div class="scale-btn" data-val="4">4</div>
+      <div class="scale-btn" data-val="5">5</div>
+    </div>
+
+    <button class="toggle-details" id="toggleExtra">+ Notiz / Datum / Name hinzufügen</button>
+    <div class="extra-fields" id="extraFields">
+      <label>Datum</label>
+      <input type="date" id="belDate">
+      <label>Notiz — optional</label>
+      <textarea id="belNote" placeholder="Besonderheiten…"></textarea>
+      <label>Eingetragen von</label>
+      <input type="text" id="belAuthor" placeholder="Dein Name">
+    </div>
+
+    <button class="submit-btn" id="belSubmit">Eintragen</button>
+    <button class="toggle-details" id="belCancelEdit" style="display:none; text-align:center; width:100%;">Bearbeiten abbrechen</button>
+    <div class="save-status" id="belSaveStatus"></div>
+  </div>
+
+  <div class="section-label">Diese Woche</div>
+  <div class="card" id="belWeekCard"></div>
+
+  <div class="section-label">Anstrengung — Verlauf</div>
+  <div class="card" id="belChartCard" style="display:none;">
+    <div id="belChart"></div>
+  </div>
+
+  <div class="section-label">Einträge</div>
+  <div class="entry-list" id="belList"></div>
+</div>
+
+<!-- GESUNDHEIT DETAIL -->
+<div id="gesundheitDetailScreen" style="display:none;">
+  <button class="back-link" id="gesDetailBackBtn">Gesundheit — Ponyliste</button>
+  <div id="gesDetailAvatar"></div>
+  <div class="detail-header" id="gesDetailHeader"></div>
+  <div class="detail-sub">Gesundheitsverlauf</div>
+
+  <div class="card">
+    <label>Eingetragen als</label>
+    <div class="chip-row" id="gesRolle">
+      <div class="chip role-team" data-val="Pferdeteam">Pferdeteam</div>
+      <div class="chip role-ehrenamt" data-val="Ehrenamt">Ehrenamt</div>
+    </div>
+    <div id="gesDurationSection" style="display:none;">
+      <label>Sichtbarkeitsdauer auf der Startseite</label>
+      <div class="chip-row" id="gesDuration">
+        <div class="chip" data-val="ack">Bis gesehen</div>
+        <div class="chip" data-val="1">1 Tag</div>
+        <div class="chip" data-val="3">3 Tage</div>
+        <div class="chip" data-val="7">1 Woche</div>
+      </div>
+    </div>
+    <label>Datum</label>
+    <input type="date" id="gesDate">
+    <label>Status / Update</label>
+    <textarea id="gesNote" placeholder="z. B. Medikamentengabe, Auffälligkeiten, Verletzung…"></textarea>
+    <label>Foto — optional</label>
+    <input type="file" accept="image/*" id="gesPhotoInput">
+    <img id="gesPhotoPreview" style="display:none; max-width:120px; border-radius:6px; margin-top:8px; border:1px solid var(--border-strong);">
+    <button type="button" id="gesPhotoRemove" style="display:none; margin-top:6px;" class="toggle-details">Foto entfernen</button>
+    <label>Eingetragen von</label>
+    <input type="text" id="gesAuthor" placeholder="Dein Name">
+    <button class="submit-btn" id="gesSubmit">Eintrag speichern</button>
+    <button class="toggle-details" id="gesCancelEdit" style="display:none; text-align:center; width:100%;">Bearbeiten abbrechen</button>
+    <div class="save-status" id="gesSaveStatus"></div>
+  </div>
+  <div class="section-label">Verlauf</div>
+  <div class="entry-list" id="gesList"></div>
+</div>
+
+<!-- ALLGEMEINE INFOS -->
+<div id="infosScreen" style="display:none;">
+  <button class="back-link" id="infosBackBtn">Übersicht</button>
+  <div class="detail-header">Allgemeine Infos</div>
+  <div class="detail-sub">Schwarzes Brett — betrifft alle Ponys / den ganzen Betrieb</div>
+
+  <div class="card">
+    <label>Hinweis</label>
+    <textarea id="infoText" placeholder="z. B. Heu muss gerade immer angefeuchtet werden…"></textarea>
+    <label>Sprachmemo — optional</label>
+    <div class="voice-row">
+      <button type="button" id="voiceRecordBtn" class="voice-btn">🎤 Aufnehmen</button>
+      <button type="button" id="voiceStopBtn" class="voice-btn stop" style="display:none;">⏹ Stopp</button>
+      <span id="voiceTimer" class="voice-timer" style="display:none;">0:00</span>
+    </div>
+    <div id="voicePreview" class="voice-preview" style="display:none;">
+      <iframe id="voicePreviewFrame" class="voice-frame" allow="autoplay"></iframe>
+      <button type="button" id="voiceRemoveBtn" class="toggle-details">Aufnahme verwerfen</button>
+    </div>
+    <label>Eingetragen von</label>
+    <input type="text" id="infoAuthor" placeholder="Dein Name">
+    <button class="submit-btn" id="infoSubmit">Hinweis anpinnen</button>
+    <button class="toggle-details" id="infoCancelEdit" style="display:none; text-align:center; width:100%;">Bearbeiten abbrechen</button>
+    <div class="save-status" id="infoSaveStatus"></div>
+  </div>
+  <div class="section-label">Aktuelle Hinweise</div>
+  <div class="entry-list" id="infoList"></div>
+
+  <div class="section-label" style="margin-top:32px;">Anschaffungen</div>
+  <div class="card">
+    <label>Was wird gebraucht?</label>
+    <input type="text" id="shopItem" placeholder="z. B. neue Halfter, Hufkratzer, Fliegenspray…">
+    <label>Notiz — optional</label>
+    <textarea id="shopNote" placeholder="Menge, Größe, warum gebraucht…"></textarea>
+    <label>Eingetragen von</label>
+    <input type="text" id="shopAuthor" placeholder="Dein Name">
+    <button class="submit-btn" id="shopSubmit">Zur Liste hinzufügen</button>
+    <button class="toggle-details" id="shopCancelEdit" style="display:none; text-align:center; width:100%;">Bearbeiten abbrechen</button>
+    <div class="save-status" id="shopSaveStatus"></div>
+  </div>
+  <div class="section-label">Einkaufsliste</div>
+  <div class="entry-list" id="shopList"></div>
+</div>
+
+</div>
+
+<script>
+let ponies = [];
+let activePonyId = null;
+let belScaleVal = null;
+let belAktivitaetVal = new Set();
+let belOrtVal = null;
+let belGruppeVal = null;
+let belKontextVal = null;
+let editingBelId = null;
+let editingBelCreated = null;
+
+function toLocalDateStr(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+function todayStr() { return toLocalDateStr(new Date()); }
+function fmtDate(d) { const [y,m,day] = d.split('-'); return `${day}.${m}.${y}`; }
+function scaleColor(v) { return {1:'#2E7D57',2:'#6C8A4B',3:'#A6862B',4:'#B4682B',5:'#8B3A32'}[v] || '#999'; }
+function daysAgo(dateStr) {
+  const d = new Date(dateStr);
+  const now = new Date();
+  const diff = Math.floor((now - d) / (1000*60*60*24));
+  if (diff === 0) return 'heute';
+  if (diff === 1) return 'gestern';
+  return `vor ${diff} Tagen`;
+}
+
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbydAWWFqswzO9dtC_fjkDvguZ3w77UBwq260J3yptsQjrrsLBESZdGNUF9q__EOeXeONw/exec';
+const MAX_CELL_CHARS = 45000; // Google-Sheet-Zellenlimit liegt bei 50.000 Zeichen — Sicherheitsabstand
+
+// Läuft die App direkt über den Google-Link (statt als heruntergeladene Datei), stellt Google
+// automatisch google.script.run bereit — das ist der offizielle, zuverlässige Weg für die
+// gehostete Version, ohne die Cross-Origin-Probleme von fetch() innerhalb des Sicherheits-Rahmens.
+const RUNNING_IN_GAS = typeof google !== 'undefined' && !!(google.script && google.script.run);
+function gasCall(fnName, ...args) {
+  return new Promise((resolve, reject) => {
+    google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[fnName].apply(null, args);
+  });
+}
+
+let storageBroken = false;
+let cache = {};       // key -> value, gefüllt durch einmaligen "all"-Abruf
+let cacheLoaded = false;
+let lastSyncTime = null;
+
+async function loadAllData(retries = 2) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      let dataObj;
+      if (RUNNING_IN_GAS) {
+        dataObj = await gasCall('serverGetAll');
+        if (!dataObj || typeof dataObj !== 'object') throw new Error('unerwartete Antwort');
+      } else {
+        const res = await fetch(`${GAS_URL}?action=all`);
+        if (!res.ok) throw new Error('http ' + res.status);
+        const data = await res.json();
+        if (!data || typeof data.data !== 'object') throw new Error('unerwartete Antwort');
+        dataObj = data.data;
+      }
+      cache = dataObj; // NUR bei Erfolg ersetzen — vorheriger Stand bleibt sonst unangetastet
+      cacheLoaded = true;
+      storageBroken = false;
+      lastSyncTime = new Date();
+      return true;
+    } catch(e) {
+      if (attempt < retries) {
+        await new Promise(r => setTimeout(r, 900)); // kurz warten, Google braucht manchmal einen Moment
+        continue;
+      }
+      // Alle Versuche fehlgeschlagen: NICHT den lokalen Cache leeren — bereits geladene
+      // Daten bleiben sichtbar, statt fälschlich "alles weg" anzuzeigen. Das Sheet selbst
+      // ist davon nie betroffen, nur die Anzeige in dieser Sitzung.
+      storageBroken = true;
+      cacheLoaded = false;
+      return false;
+    }
+  }
+}
+
+function updateSyncStatus() {
+  const el = document.getElementById('syncStatus');
+  if (!el) return;
+  if (!lastSyncTime) {
+    el.textContent = 'Nicht synchronisiert';
+    el.className = 'sync-status stale';
+    return;
+  }
+  const hh = String(lastSyncTime.getHours()).padStart(2,'0');
+  const mm = String(lastSyncTime.getMinutes()).padStart(2,'0');
+  el.textContent = storageBroken ? `Zuletzt aktualisiert: ${hh}:${mm} — Verbindung gestört` : `Aktualisiert: ${hh}:${mm} Uhr`;
+  el.className = 'sync-status' + (storageBroken ? ' stale' : '');
+}
+
+async function refreshAllData() {
+  const btn = document.getElementById('refreshBtn');
+  if (btn) { btn.disabled = true; btn.textContent = '↻ Lädt…'; }
+  const ok = await loadAllData();
+  updateSyncStatus();
+  if (btn) { btn.disabled = false; btn.textContent = '↻ Aktualisieren'; }
+  if (!ok) {
+    alert('Aktualisieren hat gerade nicht geklappt (Verbindung zum Sheet gestört). Deine bisher angezeigten Daten bleiben erhalten — im Sheet selbst ist nichts verändert. Bitte in ein paar Sekunden nochmal versuchen.');
+  }
+  return ok;
+}
+
+async function storageGet(key) {
+  // Liest ausschließlich aus dem lokalen Cache (kein Netzwerk-Roundtrip pro Klick)
+  return Object.prototype.hasOwnProperty.call(cache, key) ? cache[key] : null;
+}
+async function storageSet(key, value) {
+  cache[key] = value; // sofort lokal sichtbar, App bleibt schnell
+  try {
+    if (RUNNING_IN_GAS) {
+      await gasCall('serverSet', key, value);
+    } else {
+      const res = await fetch(GAS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'set', key, value })
+      });
+      if (!res.ok) throw new Error('http ' + res.status);
+    }
+    storageBroken = false;
+    lastSyncTime = new Date();
+    updateSyncStatus();
+    return true;
+  } catch(e) {
+    storageBroken = true;
+    updateSyncStatus();
+    return false;
+  }
+}
+async function storageDelete(key) {
+  delete cache[key];
+  try {
+    if (RUNNING_IN_GAS) {
+      await gasCall('serverDelete', key);
+    } else {
+      const res = await fetch(GAS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'delete', key })
+      });
+      if (!res.ok) throw new Error('http ' + res.status);
+    }
+    return true;
+  } catch(e) {
+    return false; // verwaister Eintrag im Sheet ist unschön, aber unkritisch
+  }
+}
+
+function showSaveStatus(el, state, message) {
+  if (!el) return;
+  el.className = 'save-status' + (state ? ' ' + state : '');
+  el.textContent = message || '';
+}
+
+// Fotos liegen als echte Dateien in Google Drive, nicht als Text im Sheet — praktisch
+// unbegrenzter Speicherplatz, kein 50.000-Zeichen-Limit, funktioniert auch bei sehr
+// vielen Fotos über Jahre hinweg. Im Sheet steht nur die kurze Drive-Datei-ID.
+function driveThumbUrl(fileId) {
+  return fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000` : null;
+}
+async function uploadPhotoToDrive(dataUrl) {
+  try {
+    const commaIdx = dataUrl.indexOf(',');
+    const meta = dataUrl.slice(5, commaIdx); // z.B. "image/jpeg;base64"
+    const mimeType = meta.split(';')[0];
+    const base64 = dataUrl.slice(commaIdx + 1);
+    let data;
+    if (RUNNING_IN_GAS) {
+      data = await gasCall('serverUploadPhoto', base64, mimeType);
+    } else {
+      const res = await fetch(GAS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'uploadPhoto', base64, mimeType })
+      });
+      if (!res.ok) throw new Error('http ' + res.status);
+      data = await res.json();
+    }
+    return data && data.ok ? { ok: true, fileId: data.fileId } : { ok: false };
+  } catch(e) {
+    return { ok: false };
+  }
+}
+async function deletePhotoFromDrive(fileId) {
+  if (!fileId) return true;
+  try {
+    if (RUNNING_IN_GAS) {
+      await gasCall('serverDeletePhoto', fileId);
+    } else {
+      await fetch(GAS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'deletePhoto', fileId })
+      });
+    }
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+async function getGesPhoto(entryId) {
+  const fileId = await storageGet(`gesphoto:${entryId}`);
+  return driveThumbUrl(fileId);
+}
+async function saveGesPhoto(entryId, dataUrl) {
+  const upload = await uploadPhotoToDrive(dataUrl);
+  if (!upload.ok) return { ok: false, reason: 'sync' };
+  const ok = await storageSet(`gesphoto:${entryId}`, upload.fileId);
+  return { ok, reason: ok ? null : 'sync' };
+}
+
+async function loadPonies() {
+  const raw = await storageGet('ponies');
+  try {
+    ponies = raw ? JSON.parse(raw) : null;
+  } catch(e) { ponies = null; }
+  if (!ponies || !Array.isArray(ponies) || ponies.length === 0) {
+    ponies = [
+      {id: 'p1', name: 'Bill'}, {id: 'p2', name: 'Laski'}, {id: 'p3', name: 'Sammy'},
+      {id: 'p4', name: 'Ronny'}, {id: 'p5', name: 'Theo'}, {id: 'p6', name: 'Pepino'}
+    ];
+    await savePonies();
+  }
+}
+async function savePonies() { return await storageSet('ponies', JSON.stringify(ponies)); }
+
+// Jeder Eintrag bekommt einen eigenen Schlüssel (kind:ponyId:entryId), statt dass alle
+// Einträge eines Ponys zusammen in einer Zelle als Liste stehen. So schreiben zwei
+// gleichzeitige Einträge zwei verschiedene Zeilen im Sheet — keiner überschreibt den anderen.
+async function getEntries(kind, ponyId) {
+  const prefix = `${kind}:${ponyId}:`;
+  const result = [];
+  for (const key of Object.keys(cache)) {
+    if (key.indexOf(prefix) === 0) {
+      try {
+        const entry = JSON.parse(cache[key]);
+        result.push(entry);
+      } catch(e) { /* beschädigten Eintrag überspringen */ }
+    }
+  }
+  return result;
+}
+async function addEntry(kind, ponyId, entry) {
+  return await storageSet(`${kind}:${ponyId}:${entry.id}`, JSON.stringify(entry));
+}
+async function deleteEntry(kind, ponyId, entryId) {
+  return await storageDelete(`${kind}:${ponyId}:${entryId}`);
+}
+
+async function getPhoto(ponyId) {
+  const fileId = await storageGet(`photo:${ponyId}`);
+  return driveThumbUrl(fileId);
+}
+async function savePhoto(ponyId, dataUrl) {
+  const oldFileId = await storageGet(`photo:${ponyId}`);
+  const upload = await uploadPhotoToDrive(dataUrl);
+  if (!upload.ok) return { ok: false, reason: 'sync' };
+  const ok = await storageSet(`photo:${ponyId}`, upload.fileId);
+  if (ok && oldFileId) await deletePhotoFromDrive(oldFileId); // altes Foto nicht als Leiche in Drive liegen lassen
+  return { ok, reason: ok ? null : 'sync' };
+}
+
+function resizeImageFile(file, maxDim, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width, h = img.height;
+        if (w > h && w > maxDim) { h = Math.round(h * maxDim / w); w = maxDim; }
+        else if (h > maxDim) { w = Math.round(w * maxDim / h); h = maxDim; }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = reject;
+      img.src = ev.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function showScreen(name) {
+  ['homeScreen','listScreen','manageScreen','bewegungDetailScreen','gesundheitDetailScreen','infosScreen','weekTableScreen'].forEach(id => {
+    document.getElementById(id).style.display = (id === name) ? 'block' : 'none';
+  });
+}
+
+// Gleiche Umstellung für die allgemeinen Infos: jeder Hinweis ein eigener Schlüssel
+async function getInfos() {
+  const prefix = 'info:';
+  const result = [];
+  for (const key of Object.keys(cache)) {
+    if (key.indexOf(prefix) === 0) {
+      try { result.push(JSON.parse(cache[key])); } catch(e) { /* skip */ }
+    }
+  }
+  return result;
+}
+async function addInfo(info) { return await storageSet(`info:${info.id}`, JSON.stringify(info)); }
+async function deleteInfo(infoId) { return await storageDelete(`info:${infoId}`); }
+
+// Anschaffungsliste — gleiches Prinzip: jeder Eintrag ein eigener Schlüssel
+async function getShopItems() {
+  const prefix = 'shop:';
+  const result = [];
+  for (const key of Object.keys(cache)) {
+    if (key.indexOf(prefix) === 0) {
+      try { result.push(JSON.parse(cache[key])); } catch(e) { /* skip */ }
+    }
+  }
+  return result;
+}
+async function addShopItem(item) { return await storageSet(`shop:${item.id}`, JSON.stringify(item)); }
+async function deleteShopItem(itemId) { return await storageDelete(`shop:${itemId}`); }
+
+// Pferdeteam-Meldungen: bleiben so lange als offene Meldung sichtbar, bis sie
+// jemand ausdrücklich als gesehen markiert — unabhängig davon, wie viele Tage
+// seit dem Eintrag vergangen sind.
+async function getOpenTeamAlerts() {
+  const alerts = [];
+  const now = Date.now();
+  for (const p of ponies) {
+    const gesEntries = await getEntries('gesundheit', p.id);
+    for (const e of gesEntries) {
+      if (e.rolle !== 'Pferdeteam' || e.acknowledged) continue;
+      if (e.visibleDays) {
+        const expiresAt = e.created + e.visibleDays * 24 * 60 * 60 * 1000;
+        if (now >= expiresAt) continue; // Sichtbarkeitsdauer abgelaufen
+      }
+      alerts.push({ ponyId: p.id, ponyName: p.name, entry: e });
+    }
+  }
+  alerts.sort((a, b) => b.entry.created - a.entry.created);
+  return alerts;
+}
+
+// Leichte Reaktionen (👍/❤️) — ein Antippen reicht, keine Namensabfrage.
+// Gespeichert wird nur eine Zählzahl je Symbol; welche man selbst schon
+// angetippt hat, merkt sich die App nur für diese Sitzung (lokal), damit
+// ein zweites Antippen die eigene Reaktion wieder zurücknehmen kann.
+let currentUserName = null;
+function promptUserName() {
+  const name = prompt('Dein Name:', currentUserName || '');
+  if (name === null) return null;
+  const trimmed = name.trim();
+  if (!trimmed) return null;
+  currentUserName = trimmed;
+  return trimmed;
+}
+const myReactionsThisSession = new Set(); // Schlüssel: "entryId:emoji"
+function reactionCount(entry, emoji) {
+  const val = entry.reactions && entry.reactions[emoji];
+  if (Array.isArray(val)) return val.length; // Altdaten (Namensliste) bleiben zählbar
+  return val || 0;
+}
+function toggleReaction(entry, emoji) {
+  const key = `${entry.id}:${emoji}`;
+  const current = reactionCount(entry, emoji);
+  const alreadyMine = myReactionsThisSession.has(key);
+  if (!entry.reactions) entry.reactions = {};
+  entry.reactions[emoji] = alreadyMine ? Math.max(0, current - 1) : current + 1;
+  if (alreadyMine) myReactionsThisSession.delete(key);
+  else myReactionsThisSession.add(key);
+  return entry;
+}
+function reactionBarHtml(entry) {
+  const emojis = ['👍', '❤️'];
+  return `<div class="reaction-bar">` + emojis.map(emoji => {
+    const count = reactionCount(entry, emoji);
+    const mine = myReactionsThisSession.has(`${entry.id}:${emoji}`);
+    return `<button class="reaction-btn${mine ? ' active' : ''}" data-emoji="${emoji}">${emoji}${count ? ' ' + count : ''}</button>`;
+  }).join('') + `</div>`;
+}
+
+function commentsHtml(entry) {
+  const comments = entry.comments || [];
+  let html = '<div class="comment-section">';
+  if (comments.length > 0) {
+    html += '<div class="comment-list">' + comments.map(c =>
+      `<div class="comment-item"><span class="comment-author">${(c.author||'unbekannt').replace(/</g,'&lt;')}:</span> ${c.text.replace(/</g,'&lt;')}</div>`
+    ).join('') + '</div>';
+  }
+  html += `
+    <div class="comment-add-row">
+      <input type="text" class="comment-input" placeholder="Kommentar schreiben…">
+      <button class="comment-send-btn">Senden</button>
+    </div>
+  </div>`;
+  return html;
+}
+function wireComments(div, entry, saveFn, rerenderFn) {
+  const input = div.querySelector('.comment-input');
+  const btn = div.querySelector('.comment-send-btn');
+  const submit = async () => {
+    const text = input.value.trim();
+    if (!text) return;
+    const name = promptUserName();
+    if (!name) return;
+    if (!entry.comments) entry.comments = [];
+    entry.comments.push({ text, author: name, created: Date.now() });
+    const ok = await saveFn(entry);
+    if (!ok) { alert('Kommentar konnte nicht gespeichert werden — Verbindung prüfen.'); return; }
+    rerenderFn();
+  };
+  btn.onclick = submit;
+  input.onkeydown = (ev) => { if (ev.key === 'Enter') submit(); };
+}
+
+async function acknowledgeAlert(ponyId, entry) {
+  const updated = { ...entry, acknowledged: true, acknowledgedAt: Date.now() };
+  const ok = await addEntry('gesundheit', ponyId, updated);
+  if (!ok) { alert('Konnte nicht gespeichert werden — Verbindung prüfen und nochmal versuchen.'); return; }
+  await renderHomeAlerts();
+  if (document.getElementById('gesundheitDetailScreen').style.display === 'block' && activePonyId === ponyId) {
+    await renderGesundheitList();
+  }
+}
+
+async function renderHomeAlerts() {
+  const banner = document.getElementById('teamAlertBanner');
+  const alerts = await getOpenTeamAlerts();
+  if (alerts.length === 0) { banner.innerHTML = ''; return; }
+  let html = `<div class="ack-banner">
+    <div class="ack-banner-title">⚠ Offene Pferdeteam-Meldungen (${alerts.length})</div>`;
+  alerts.forEach((a, i) => {
+    const expiryNote = a.entry.visibleDays
+      ? `<div class="ack-item-expiry">sichtbar bis ${fmtDate(toLocalDateStr(new Date(a.entry.created + a.entry.visibleDays*24*60*60*1000)))}</div>`
+      : '';
+    html += `
+      <div class="ack-item">
+        <div class="ack-item-head">
+          <span class="ack-item-pony">${a.ponyName}</span>
+          <span class="ack-item-date">${fmtDate(a.entry.date)}</span>
+        </div>
+        <div class="ack-item-note">${a.entry.note.replace(/</g,'&lt;')}</div>
+        ${expiryNote}
+        <button class="ack-item-btn" data-idx="${i}">✓ Als gesehen markieren</button>
+      </div>`;
+  });
+  html += '</div>';
+  banner.innerHTML = html;
+  banner.querySelectorAll('.ack-item-btn').forEach(btn => {
+    btn.onclick = () => {
+      const a = alerts[parseInt(btn.dataset.idx)];
+      acknowledgeAlert(a.ponyId, a.entry);
+    };
+  });
+}
+
+/* ---------- Home ---------- */
+async function renderHome() {
+  await renderHomeAlerts();
+  const today = todayStr();
+  let missingCount = 0;
+  let healthUpdatesToday = 0;
+  let teamHealthToday = 0;
+  const missingNames = [];
+  const healthNames = [];
+  for (const p of ponies) {
+    const belEntries = await getEntries('belastung', p.id);
+    const gesEntries = await getEntries('gesundheit', p.id);
+    const hasToday = belEntries.some(e => e.date === today);
+    if (!hasToday) { missingCount++; missingNames.push(p.name); }
+    const todaysGes = gesEntries.filter(e => e.date === today);
+    if (todaysGes.length > 0) {
+      healthUpdatesToday++;
+      const isTeam = todaysGes.some(e => e.rolle === 'Pferdeteam');
+      if (isTeam) teamHealthToday++;
+      healthNames.push(isTeam ? `★ ${p.name}` : p.name);
+    }
+  }
+  document.getElementById('statHealth').textContent = healthUpdatesToday;
+  document.getElementById('statHealth').className = 'status-num' + (teamHealthToday > 0 ? ' alert' : ' ok');
+  document.getElementById('bewegungSummary').textContent =
+    missingCount === 0 ? `Alle ${ponies.length} Ponys heute bewegt` : `${missingCount} von ${ponies.length} heute noch offen`;
+  document.getElementById('bewegungNames').textContent =
+    missingCount === 0 ? '' : 'Offen: ' + missingNames.join(', ');
+  document.getElementById('gesundheitSummary').textContent =
+    healthUpdatesToday === 0 ? 'Keine neuen Meldungen heute' : `${healthUpdatesToday} neue Meldung(en) heute`;
+  document.getElementById('gesundheitNames').textContent =
+    healthUpdatesToday === 0 ? '' : 'Heute: ' + healthNames.join(', ');
+
+  const infos = await getInfos();
+  const shopItems = await getShopItems();
+  const openShopCount = shopItems.filter(i => !i.done).length;
+  document.getElementById('statInfos').textContent = infos.length;
+  const parts = [];
+  if (infos.length > 0) parts.push(`${infos.length} Hinweis(e) — z. B. „${infos[0].text.slice(0,40)}${infos[0].text.length>40?'…':''}“`);
+  if (openShopCount > 0) parts.push(`${openShopCount} offene Anschaffung(en)`);
+  document.getElementById('infosSummary').textContent = parts.length ? parts.join(' · ') : 'Keine Hinweise hinterlegt';
+}
+
+/* ---------- Pony-Liste ---------- */
+let tableWeekOffset = 0;
+
+async function renderWeekTable() {
+  const weekDates = getWeekDates(tableWeekOffset);
+  const today = todayStr();
+  const dayLabels = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+  const navWrap = document.getElementById('weekTableNav');
+  const table = document.getElementById('weekTable');
+
+  navWrap.innerHTML = weekNavHtml('table', tableWeekOffset);
+  document.getElementById('tablePrevWeek').onclick = () => { tableWeekOffset--; renderWeekTable(); };
+  document.getElementById('tableNextWeek').onclick = () => { tableWeekOffset++; renderWeekTable(); };
+  const todayBtn = document.getElementById('tableTodayWeek');
+  if (todayBtn) todayBtn.onclick = () => { tableWeekOffset = 0; renderWeekTable(); };
+
+  const allEntries = {};
+  for (const p of ponies) {
+    allEntries[p.id] = await getEntries('belastung', p.id);
+  }
+
+  let html = '<thead><tr><th class="day-col">Tag</th>';
+  ponies.forEach(p => { html += `<th>${p.name}</th>`; });
+  html += '</tr></thead><tbody>';
+
+  weekDates.forEach((d, i) => {
+    const [y,m,day] = d.split('-');
+    const isToday = d === today;
+    html += `<tr><td class="day-label ${isToday ? 'is-today' : ''}">${dayLabels[i]}<br>${day}.${m}.</td>`;
+    ponies.forEach(p => {
+      const dayEntries = allEntries[p.id].filter(e => e.date === d);
+      if (dayEntries.length === 0) {
+        html += `<td class="cell empty">–</td>`;
+      } else {
+        const rows = dayEntries.map(e => {
+          const akt = (e.aktivitaet || []).join('+');
+          const ctx = e.gruppe || e.kontext || '';
+          const label = [akt, ctx].filter(Boolean).join(' · ');
+          return `<div class="cell-entry" style="background:${scaleColor(e.value)};">${label} <span class="cell-entry-val">${e.value}</span></div>`;
+        });
+        html += `<td class="cell">${rows.join('')}</td>`;
+      }
+    });
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+async function renderList(kind) {
+  const grid = document.getElementById('listGrid');
+  grid.innerHTML = '';
+  const today = todayStr();
+
+  document.getElementById('listHeader').textContent = kind === 'bewegung' ? 'Bewegung' : 'Gesundheit';
+  document.getElementById('openWeekTable').style.display = kind === 'bewegung' ? 'block' : 'none';
+
+  for (const p of ponies) {
+    const row = document.createElement('div');
+    row.className = 'pony-row';
+    const photoUrl = await getPhoto(p.id);
+    const avatarHtml = photoUrl
+      ? `<img class="avatar" src="${photoUrl}">`
+      : `<div class="avatar-placeholder">${p.name.slice(0,2).toUpperCase()}</div>`;
+
+    if (kind === 'bewegung') {
+      const belEntries = await getEntries('belastung', p.id);
+      belEntries.sort((a,b) => b.date.localeCompare(a.date) || b.created - a.created);
+      const latestBel = belEntries[0];
+      const todaysBel = belEntries.filter(e => e.date === today);
+      const badgeHtml = latestBel
+        ? `<div class="load-badge" style="background:${scaleColor(latestBel.value)}">${latestBel.value}</div>`
+        : `<div class="load-badge none">–</div>`;
+      let statusText, statusClass;
+      if (todaysBel.length > 0) {
+        const parts = todaysBel.map(e => {
+          const akt = (e.aktivitaet || []).join(' + ') || '–';
+          return `${akt}${e.ort ? ' (' + e.ort + ')' : ''}`;
+        });
+        statusText = 'Heute: ' + parts.join(', ');
+        statusClass = 'pony-status';
+      } else {
+        statusText = 'Heute noch nicht bewegt';
+        statusClass = 'pony-status missing';
+      }
+      row.innerHTML = `
+        ${avatarHtml}
+        ${badgeHtml}
+        <div class="pony-main">
+          <div class="pony-name">${p.name}</div>
+          <div class="${statusClass}">${statusText}</div>
+        </div>
+        <div class="chevron">›</div>`;
+      row.onclick = () => openBewegungDetail(p.id);
+    } else {
+      const gesEntries = await getEntries('gesundheit', p.id);
+      gesEntries.sort((a,b) => b.date.localeCompare(a.date) || b.created - a.created);
+      const latestGes = gesEntries[0];
+      const statusText = latestGes
+        ? `${latestGes.rolle === 'Pferdeteam' ? '★ Pferdeteam — ' : ''}${daysAgo(latestGes.date)}: ${latestGes.note.replace(/</g,'&lt;')}`
+        : 'keine Einträge';
+      const statusClass = latestGes && latestGes.rolle === 'Pferdeteam' ? 'pony-status missing' : 'pony-status';
+      row.innerHTML = `
+        ${avatarHtml}
+        <div class="pony-main">
+          <div class="pony-name">${p.name}</div>
+          <div class="${statusClass}">${statusText}</div>
+        </div>
+        <div class="chevron">›</div>`;
+      row.onclick = () => openGesundheitDetail(p.id);
+    }
+    grid.appendChild(row);
+  }
+}
+
+/* ---------- Verwaltung ---------- */
+function renderPonyManage() {
+  const container = document.getElementById('ponyManage');
+  container.innerHTML = '';
+  ponies.forEach(p => {
+    const row = document.createElement('div');
+    row.className = 'rename-row';
+    row.innerHTML = `
+      <img class="avatar photo-preview" data-id="${p.id}" src="" style="display:none;">
+      <div class="avatar-placeholder photo-placeholder" data-id="${p.id}">${p.name.slice(0,2).toUpperCase()}</div>
+      <input type="text" value="${p.name.replace(/"/g,'&quot;')}" data-id="${p.id}" class="rename-input">
+      <button class="icon-btn rename-save" data-id="${p.id}">✓</button>`;
+    container.appendChild(row);
+
+    const photoRow = document.createElement('div');
+    photoRow.className = 'photo-upload-row';
+    photoRow.style.marginBottom = '14px';
+    photoRow.innerHTML = `<input type="file" accept="image/*" class="photo-input" data-id="${p.id}">`;
+    container.appendChild(photoRow);
+
+    getPhoto(p.id).then(url => {
+      if (url) {
+        const img = container.querySelector(`.photo-preview[data-id="${p.id}"]`);
+        const ph = container.querySelector(`.photo-placeholder[data-id="${p.id}"]`);
+        img.src = url; img.style.display = 'block'; ph.style.display = 'none';
+      }
+    });
+  });
+  container.querySelectorAll('.photo-input').forEach(input => {
+    input.onchange = async () => {
+      const id = input.dataset.id;
+      const file = input.files[0];
+      if (!file) return;
+      input.disabled = true;
+      const img = container.querySelector(`.photo-preview[data-id="${id}"]`);
+      const ph = container.querySelector(`.photo-placeholder[data-id="${id}"]`);
+      const dataUrl = await resizeImageFile(file, 900, 0.82); // Drive hat kein 50k-Zeichen-Limit, also kann das Foto schärfer bleiben
+      const result = await savePhoto(id, dataUrl);
+      input.disabled = false;
+      if (!result.ok) {
+        alert('Foto konnte nicht gespeichert werden — Verbindung prüfen und nochmal versuchen.');
+        return;
+      }
+      img.src = dataUrl; img.style.display = 'block'; ph.style.display = 'none'; // sofortige lokale Vorschau, bis Drive-Version geladen ist
+    };
+  });
+  container.querySelectorAll('.rename-save').forEach(btn => {
+    btn.onclick = async () => {
+      const id = btn.dataset.id;
+      const input = container.querySelector(`.rename-input[data-id="${id}"]`);
+      const newName = input.value.trim();
+      if (newName) {
+        const prevName = ponies.find(x => x.id === id).name;
+        ponies.find(x => x.id === id).name = newName;
+        btn.disabled = true;
+        const ok = await savePonies();
+        btn.disabled = false;
+        if (ok) {
+          btn.textContent = '✓ gespeichert';
+          setTimeout(() => btn.textContent = '✓', 1200);
+        } else {
+          ponies.find(x => x.id === id).name = prevName; // Änderung zurücknehmen, da nicht gesichert
+          input.value = prevName;
+          alert('Name konnte nicht gespeichert werden — Verbindung prüfen und nochmal versuchen.');
+        }
+      }
+    };
+  });
+  const addRow = document.createElement('div');
+  addRow.style.marginTop = '14px';
+  addRow.innerHTML = `<label>Neues Pony</label>
+    <input type="text" id="newPonyName" placeholder="Name des neuen Ponys">
+    <button class="icon-btn" id="addPonyBtn" style="margin-top:8px; width:100%;">+ Pony hinzufügen</button>`;
+  container.appendChild(addRow);
+  document.getElementById('addPonyBtn').onclick = async () => {
+    const input = document.getElementById('newPonyName');
+    const btn = document.getElementById('addPonyBtn');
+    const name = input.value.trim();
+    if (name) {
+      const newPony = {id: 'p' + Date.now(), name};
+      ponies.push(newPony);
+      btn.disabled = true;
+      const ok = await savePonies();
+      btn.disabled = false;
+      if (ok) {
+        input.value = '';
+        renderPonyManage();
+      } else {
+        ponies = ponies.filter(p => p.id !== newPony.id); // zurücknehmen, da nicht gesichert
+        alert('Pony konnte nicht gespeichert werden — Verbindung prüfen und nochmal versuchen.');
+      }
+    }
+  };
+}
+
+/* ---------- Bewegung Detail ---------- */
+function resetQuickForm() {
+  belScaleVal = null;
+  belAktivitaetVal = new Set();
+  belOrtVal = null;
+  belGruppeVal = null;
+  belKontextVal = null;
+  editingBelId = null;
+  editingBelCreated = null;
+  document.getElementById('belKontext').querySelectorAll('.chip').forEach(b => b.classList.remove('selected'));
+  document.getElementById('belGruppeSection').style.display = 'none';
+  document.getElementById('belScale').querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('belAktivitaet').querySelectorAll('.chip').forEach(b => b.classList.remove('selected'));
+  document.getElementById('belOrt').querySelectorAll('.chip').forEach(b => b.classList.remove('selected'));
+  document.getElementById('belGruppeChips').querySelectorAll('.chip').forEach(b => b.classList.remove('selected'));
+  document.getElementById('belNote').value = '';
+  document.getElementById('belDate').value = todayStr();
+  document.getElementById('extraFields').classList.remove('open');
+  document.getElementById('belSubmit').textContent = 'Eintragen';
+  document.getElementById('belCancelEdit').style.display = 'none';
+}
+
+function fillBelForm(e) {
+  editingBelId = e.id;
+  editingBelCreated = e.created;
+  belScaleVal = String(e.value);
+  belAktivitaetVal = new Set(e.aktivitaet || []);
+  belOrtVal = e.ort || null;
+  belGruppeVal = e.gruppe || null;
+  belKontextVal = e.kontext || null;
+
+  document.getElementById('belKontext').querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', c.dataset.val === belKontextVal));
+  document.getElementById('belGruppeSection').style.display = belKontextVal === 'Ponygruppen' ? 'block' : 'none';
+  document.getElementById('belGruppeChips').querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', c.dataset.val === belGruppeVal));
+  document.getElementById('belAktivitaet').querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', belAktivitaetVal.has(c.dataset.val)));
+  document.getElementById('belOrt').querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', c.dataset.val === belOrtVal));
+  document.getElementById('belScale').querySelectorAll('.scale-btn').forEach(b => b.classList.toggle('selected', b.dataset.val === belScaleVal));
+  document.getElementById('belNote').value = e.note || '';
+  document.getElementById('belDate').value = e.date || todayStr();
+  document.getElementById('belAuthor').value = e.author || '';
+  if (e.note) document.getElementById('extraFields').classList.add('open');
+
+  document.getElementById('belSubmit').textContent = 'Änderung speichern';
+  document.getElementById('belCancelEdit').style.display = 'inline-block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function openBewegungDetail(ponyId) {
+  activePonyId = ponyId;
+  belWeekOffset = 0;
+  const pony = ponies.find(p => p.id === ponyId);
+  document.getElementById('belDetailHeader').textContent = pony.name;
+  await renderDetailAvatar('belDetailAvatar', ponyId, pony.name);
+  resetQuickForm();
+  await renderBelastungList();
+  showScreen('bewegungDetailScreen');
+}
+
+async function renderDetailAvatar(containerId, ponyId, name) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const url = await getPhoto(ponyId);
+  el.innerHTML = url
+    ? `<img class="avatar-lg" src="${url}">`
+    : `<div class="avatar-placeholder" style="width:44px;height:44px;font-size:14px;">${name.slice(0,2).toUpperCase()}</div>`;
+}
+
+function getWeekDates(offset) {
+  offset = offset || 0;
+  const now = new Date();
+  const day = now.getDay(); // 0=So,1=Mo,...
+  const diffToMonday = day === 0 ? -6 : 1 - day;
+  const monday = new Date(now);
+  monday.setDate(now.getDate() + diffToMonday + (offset * 7));
+  const dates = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    dates.push(toLocalDateStr(d));
+  }
+  return dates;
+}
+
+function weekRangeLabel(weekDates, offset) {
+  const monthNames = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+  const [y1,m1,d1] = weekDates[0].split('-');
+  const [y2,m2,d2] = weekDates[6].split('-');
+  const range = m1 === m2
+    ? `${parseInt(d1)}.–${parseInt(d2)}. ${monthNames[parseInt(m2)-1]} ${y2}`
+    : `${parseInt(d1)}. ${monthNames[parseInt(m1)-1]} – ${parseInt(d2)}. ${monthNames[parseInt(m2)-1]} ${y2}`;
+  return offset === 0 ? `Diese Woche · ${range}` : range;
+}
+
+function weekNavHtml(idPrefix, offset) {
+  return `
+    <div class="week-nav">
+      <button class="week-nav-btn" id="${idPrefix}PrevWeek">‹</button>
+      <div class="week-nav-label">${weekRangeLabel(getWeekDates(offset), offset)}</div>
+      <button class="week-nav-btn" id="${idPrefix}NextWeek">›</button>
+      ${offset !== 0 ? `<button class="week-nav-today" id="${idPrefix}TodayWeek">Heute</button>` : ''}
+    </div>`;
+}
+
+let belWeekOffset = 0;
+
+function renderWeekOverview(entries) {
+  const card = document.getElementById('belWeekCard');
+  const weekDates = getWeekDates(belWeekOffset);
+  const today = todayStr();
+  const dayLabels = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+  const weekEntries = entries.filter(e => weekDates.includes(e.date));
+
+  let daysHtml = '<div class="week-days">';
+  weekDates.forEach((d, i) => {
+    const moved = weekEntries.some(e => e.date === d);
+    const isFuture = d > today;
+    const isToday = d === today;
+    daysHtml += `<div class="week-day ${moved ? 'done' : ''} ${isToday ? 'is-today' : ''}" style="${isFuture ? 'opacity:0.45;' : ''}">
+      <div class="week-day-label">${dayLabels[i]}</div>
+      <div class="week-day-num">${parseInt(d.split('-')[2])}</div>
+      <div class="week-day-dot"></div>
+    </div>`;
+  });
+  daysHtml += '</div>';
+
+  const daysMoved = new Set(weekEntries.map(e => e.date)).size;
+  const geführtCount = weekEntries.filter(e => (e.aktivitaet||[]).includes('Geführt')).length;
+  const gerittenCount = weekEntries.filter(e => (e.aktivitaet||[]).includes('Geritten')).length;
+  const ehrenamtCount = weekEntries.filter(e => e.kontext === 'Ehrenamt').length;
+  const ponygruppeCount = weekEntries.filter(e => e.kontext === 'Ponygruppen').length;
+  const therapieCount = weekEntries.filter(e => e.kontext === 'Therapiereiten').length;
+  const bildungCount = weekEntries.filter(e => e.kontext === 'Bildungsprojekt').length;
+  const avgAnstrengung = weekEntries.length
+    ? (weekEntries.reduce((s,e) => s + e.value, 0) / weekEntries.length).toFixed(1)
+    : '–';
+
+  const statsHtml = `
+    <div class="week-stats">
+      <div><div class="week-stat-num">${daysMoved}/7</div><div class="week-stat-label">Tage bewegt</div></div>
+      <div><div class="week-stat-num">${geführtCount}</div><div class="week-stat-label">× Geführt</div></div>
+      <div><div class="week-stat-num">${gerittenCount}</div><div class="week-stat-label">× Geritten</div></div>
+      <div><div class="week-stat-num">${avgAnstrengung}</div><div class="week-stat-label">Ø Anstrengung</div></div>
+    </div>
+    <div class="week-stats" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <div><div class="week-stat-num">${ehrenamtCount}</div><div class="week-stat-label">× Ehrenamt</div></div>
+      <div><div class="week-stat-num">${ponygruppeCount}</div><div class="week-stat-label">× Ponygruppen</div></div>
+      <div><div class="week-stat-num">${therapieCount}</div><div class="week-stat-label">× Therapiereiten</div></div>
+      <div><div class="week-stat-num">${bildungCount}</div><div class="week-stat-label">× Bildungsprojekt</div></div>
+    </div>`;
+
+  card.innerHTML = weekNavHtml('bel', belWeekOffset) + daysHtml + statsHtml;
+
+  document.getElementById('belPrevWeek').onclick = () => { belWeekOffset--; renderWeekOverview(entries); };
+  document.getElementById('belNextWeek').onclick = () => { belWeekOffset++; renderWeekOverview(entries); };
+  const todayBtn = document.getElementById('belTodayWeek');
+  if (todayBtn) todayBtn.onclick = () => { belWeekOffset = 0; renderWeekOverview(entries); };
+}
+
+function renderChart(entriesAsc) {
+  const chartCard = document.getElementById('belChartCard');
+  const chartEl = document.getElementById('belChart');
+  if (entriesAsc.length === 0) { chartCard.style.display = 'none'; return; }
+  chartCard.style.display = 'block';
+  const recent = entriesAsc.slice(-12);
+  let html = '<div class="chart-wrap">';
+  recent.forEach(e => {
+    const h = Math.max(8, (e.value / 5) * 74);
+    const [y,m,day] = e.date.split('-');
+    html += `
+      <div class="chart-bar-col">
+        <div class="chart-bar-val">${e.value}</div>
+        <div class="chart-bar" style="height:${h}px; background:${scaleColor(e.value)};" title="${fmtDate(e.date)} · ${e.value}/5"></div>
+        <div class="chart-bar-label">${day}.${m}.</div>
+      </div>`;
+  });
+  html += '</div>';
+  chartEl.innerHTML = html;
+}
+
+async function renderBelastungList() {
+  const list = document.getElementById('belList');
+  const entries = await getEntries('belastung', activePonyId);
+  renderWeekOverview(entries);
+  const chronological = [...entries].sort((a,b) => a.date.localeCompare(b.date) || a.created - b.created);
+  renderChart(chronological);
+  entries.sort((a,b) => b.date.localeCompare(a.date) || b.created - a.created);
+  if (entries.length === 0) { list.innerHTML = '<div class="empty-state">Noch keine Einträge für dieses Pony.</div>'; return; }
+  list.innerHTML = '';
+  entries.forEach(e => {
+    const div = document.createElement('div');
+    div.className = 'entry';
+    const tags = (e.aktivitaet || []).map(a => `<span class="tag">${a}</span>`).join('') +
+      (e.ort ? `<span class="tag">${e.ort}</span>` : '') +
+      (e.gruppe ? `<span class="tag">${e.gruppe}</span>` : (e.kontext ? `<span class="tag">${e.kontext}</span>` : ''));
+    div.innerHTML = `
+      <div class="entry-top">
+        <span>${fmtDate(e.date)}</span>
+        <span class="badge" style="background:${scaleColor(e.value)}">${e.value}/5</span>
+      </div>
+      <div class="tag-group">${tags}</div>
+      ${e.note ? `<div class="entry-note">${e.note.replace(/</g,'&lt;')}</div>` : ''}
+      <div class="entry-meta"><span>von ${e.author || 'unbekannt'}</span>
+        <span class="entry-actions">
+          <button class="edit-btn" data-id="${e.id}">bearbeiten</button>
+          <button class="delete-btn" data-id="${e.id}">löschen</button>
+        </span>
+      </div>`;
+    div.querySelector('.edit-btn').onclick = () => fillBelForm(e);
+    div.querySelector('.delete-btn').onclick = async () => {
+      if (!confirm('Diesen Bewegungs-Eintrag wirklich löschen?')) return;
+      const ok = await deleteEntry('belastung', activePonyId, e.id);
+      if (!ok) alert('Löschen konnte nicht mit dem Google Sheet synchronisiert werden. Beim nächsten Aktualisieren könnte der Eintrag wieder auftauchen.');
+      renderBelastungList();
+    };
+    list.appendChild(div);
+  });
+}
+
+/* ---------- Gesundheit Detail ---------- */
+function resetGesForm() {
+  editingGesId = null;
+  editingGesCreated = null;
+  editingGesAckFields = null;
+  editingGesOldPhotoFileId = null;
+  gesPhotoDataUrl = null;
+  gesPhotoRemoved = false;
+  gesRolleVal = null;
+  gesDurationVal = 'ack';
+  document.getElementById('gesRolle').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  document.getElementById('gesDuration').querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', c.dataset.val === 'ack'));
+  document.getElementById('gesDurationSection').style.display = 'none';
+  document.getElementById('gesDate').value = todayStr();
+  document.getElementById('gesNote').value = '';
+  document.getElementById('gesAuthor').value = '';
+  document.getElementById('gesPhotoInput').value = '';
+  document.getElementById('gesPhotoPreview').style.display = 'none';
+  document.getElementById('gesPhotoRemove').style.display = 'none';
+  document.getElementById('gesSubmit').textContent = 'Eintrag speichern';
+  document.getElementById('gesCancelEdit').style.display = 'none';
+}
+
+async function fillGesForm(e, existingPhotoUrl) {
+  editingGesId = e.id;
+  editingGesCreated = e.created;
+  editingGesAckFields = { acknowledged: e.acknowledged, acknowledgedBy: e.acknowledgedBy, acknowledgedAt: e.acknowledgedAt, reactions: e.reactions, comments: e.comments };
+  editingGesOldPhotoFileId = e.hasPhoto ? await storageGet(`gesphoto:${e.id}`) : null;
+  gesPhotoDataUrl = null;
+  gesPhotoRemoved = false;
+  gesRolleVal = e.rolle || null;
+  gesDurationVal = e.visibleDays ? String(e.visibleDays) : 'ack';
+  document.getElementById('gesRolle').querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', c.dataset.val === gesRolleVal));
+  document.getElementById('gesDuration').querySelectorAll('.chip').forEach(c => c.classList.toggle('selected', c.dataset.val === gesDurationVal));
+  document.getElementById('gesDurationSection').style.display = gesRolleVal === 'Pferdeteam' ? 'block' : 'none';
+  document.getElementById('gesDate').value = e.date || todayStr();
+  document.getElementById('gesNote').value = e.note || '';
+  document.getElementById('gesAuthor').value = e.author || '';
+  document.getElementById('gesPhotoInput').value = '';
+  const preview = document.getElementById('gesPhotoPreview');
+  if (existingPhotoUrl) {
+    preview.src = existingPhotoUrl;
+    preview.style.display = 'block';
+    document.getElementById('gesPhotoRemove').style.display = 'inline-block';
+  } else {
+    preview.style.display = 'none';
+    document.getElementById('gesPhotoRemove').style.display = 'none';
+  }
+  document.getElementById('gesSubmit').textContent = 'Änderung speichern';
+  document.getElementById('gesCancelEdit').style.display = 'inline-block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function openGesundheitDetail(ponyId) {
+  activePonyId = ponyId;
+  const pony = ponies.find(p => p.id === ponyId);
+  document.getElementById('gesDetailHeader').textContent = pony.name;
+  await renderDetailAvatar('gesDetailAvatar', ponyId, pony.name);
+  resetGesForm();
+  await renderGesundheitList();
+  showScreen('gesundheitDetailScreen');
+}
+
+async function renderGesundheitList() {
+  const list = document.getElementById('gesList');
+  const entries = await getEntries('gesundheit', activePonyId);
+  entries.sort((a,b) => b.date.localeCompare(a.date) || b.created - a.created);
+  if (entries.length === 0) { list.innerHTML = '<div class="empty-state">Noch keine Gesundheitseinträge für dieses Pony.</div>'; return; }
+  list.innerHTML = '';
+  for (const e of entries) {
+    const div = document.createElement('div');
+    div.className = 'entry' + (e.rolle === 'Pferdeteam' ? ' team-entry' : '');
+    const photoUrl = e.hasPhoto ? await getGesPhoto(e.id) : null;
+    const roleBadge = e.rolle === 'Pferdeteam'
+      ? `<span class="role-badge team">Pferdeteam</span>`
+      : (e.rolle === 'Ehrenamt' ? `<span class="role-badge ehrenamt">Ehrenamt</span>` : '');
+    const ackHtml = e.rolle === 'Pferdeteam'
+      ? (e.acknowledged
+          ? `<div class="ack-status">✓ Gesehen — ${fmtDate(toLocalDateStr(new Date(e.acknowledgedAt)))}</div>`
+          : `<button class="ack-item-btn" style="margin-top:8px; padding:6px 11px; font-size:11.5px;" data-id="${e.id}">✓ Als gesehen markieren</button>`)
+      : '';
+    div.innerHTML = `
+      <div class="entry-top"><span>${fmtDate(e.date)}</span>${roleBadge}</div>
+      <div class="entry-note">${e.note.replace(/</g,'&lt;')}</div>
+      ${photoUrl ? `<img class="entry-photo" src="${photoUrl}">` : ''}
+      ${ackHtml}
+      ${reactionBarHtml(e)}
+      ${commentsHtml(e)}
+      <div class="entry-meta"><span>von ${e.author || 'unbekannt'}</span>
+        <span class="entry-actions">
+          <button class="edit-btn" data-id="${e.id}">bearbeiten</button>
+          <button class="delete-btn" data-id="${e.id}">löschen</button>
+        </span>
+      </div>`;
+    wireComments(div, e, (entry) => addEntry('gesundheit', activePonyId, entry), renderGesundheitList);
+    div.querySelectorAll('.reaction-btn').forEach(btn => {
+      btn.onclick = async () => {
+        toggleReaction(e, btn.dataset.emoji);
+        const ok = await addEntry('gesundheit', activePonyId, e);
+        if (!ok) alert('Reaktion konnte nicht gespeichert werden — Verbindung prüfen.');
+        renderGesundheitList();
+      };
+    });
+    if (e.rolle === 'Pferdeteam' && !e.acknowledged) {
+      div.querySelector('.ack-item-btn').onclick = () => acknowledgeAlert(activePonyId, e);
+    }
+    div.querySelector('.edit-btn').onclick = () => fillGesForm(e, photoUrl);
+    div.querySelector('.delete-btn').onclick = async () => {
+      if (!confirm('Diesen Gesundheits-Eintrag wirklich löschen?')) return;
+      const ok = await deleteEntry('gesundheit', activePonyId, e.id);
+      if (e.hasPhoto) {
+        const fileId = await storageGet(`gesphoto:${e.id}`);
+        await deletePhotoFromDrive(fileId);
+        await storageDelete(`gesphoto:${e.id}`);
+      }
+      if (!ok) alert('Löschen konnte nicht mit dem Google Sheet synchronisiert werden. Beim nächsten Aktualisieren könnte der Eintrag wieder auftauchen.');
+      renderGesundheitList();
+    };
+    list.appendChild(div);
+  }
+}
+
+/* ---------- Allgemeine Infos ---------- */
+async function renderInfoList() {
+  const list = document.getElementById('infoList');
+  const infos = await getInfos();
+  infos.sort((a,b) => b.created - a.created);
+  if (infos.length === 0) { list.innerHTML = '<div class="empty-state">Noch keine Hinweise hinterlegt.</div>'; return; }
+  list.innerHTML = '';
+  for (const e of infos) {
+    const div = document.createElement('div');
+    div.className = 'entry';
+    let audioFileId = null;
+    if (e.hasAudio) audioFileId = await storageGet(`infoaudio:${e.id}`);
+    div.innerHTML = `
+      <div class="entry-top"><span>${fmtDate(e.date)}</span></div>
+      <div class="entry-note">${e.text.replace(/</g,'&lt;')}</div>
+      ${audioFileId ? `<iframe class="voice-frame" style="margin-top:8px;" src="https://drive.google.com/file/d/${audioFileId}/preview" allow="autoplay"></iframe>` : ''}
+      ${reactionBarHtml(e)}
+      ${commentsHtml(e)}
+      <div class="entry-meta"><span>von ${e.author || 'unbekannt'}</span>
+        <span class="entry-actions">
+          <button class="edit-btn" data-id="${e.id}">bearbeiten</button>
+          <button class="delete-btn" data-id="${e.id}">löschen</button>
+        </span>
+      </div>`;
+    wireComments(div, e, addInfo, renderInfoList);
+    div.querySelectorAll('.reaction-btn').forEach(btn => {
+      btn.onclick = async () => {
+        toggleReaction(e, btn.dataset.emoji);
+        const ok = await addInfo(e);
+        if (!ok) alert('Reaktion konnte nicht gespeichert werden — Verbindung prüfen.');
+        renderInfoList();
+      };
+    });
+    div.querySelector('.edit-btn').onclick = () => fillInfoForm(e);
+    div.querySelector('.delete-btn').onclick = async () => {
+      if (!confirm('Diesen Hinweis wirklich löschen?')) return;
+      const ok = await deleteInfo(e.id);
+      if (e.hasAudio) {
+        const fileId = await storageGet(`infoaudio:${e.id}`);
+        await deletePhotoFromDrive(fileId);
+        await storageDelete(`infoaudio:${e.id}`);
+      }
+      if (!ok) alert('Löschen konnte nicht mit dem Google Sheet synchronisiert werden. Beim nächsten Aktualisieren könnte der Hinweis wieder auftauchen.');
+      renderInfoList();
+    };
+    list.appendChild(div);
+  }
+}
+
+async function renderShopList() {
+  const list = document.getElementById('shopList');
+  const items = await getShopItems();
+  items.sort((a,b) => (a.done === b.done ? 0 : a.done ? 1 : -1) || b.created - a.created); // offene zuerst
+  if (items.length === 0) { list.innerHTML = '<div class="empty-state">Noch nichts auf der Liste.</div>'; return; }
+  list.innerHTML = '';
+  items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'entry';
+    div.innerHTML = `
+      <div class="shop-item">
+        <input type="checkbox" class="shop-check" ${item.done ? 'checked' : ''}>
+        <div class="shop-body">
+          <div class="shop-name ${item.done ? 'done' : ''}">${item.text.replace(/</g,'&lt;')}</div>
+          ${item.note ? `<div class="shop-note">${item.note.replace(/</g,'&lt;')}</div>` : ''}
+          <div class="entry-meta"><span>von ${item.author || 'unbekannt'} · ${fmtDate(item.date)}</span>
+            <span class="entry-actions">
+              <button class="edit-btn">bearbeiten</button>
+              <button class="delete-btn">löschen</button>
+            </span>
+          </div>
+        </div>
+      </div>`;
+    div.querySelector('.shop-check').onchange = async (ev) => {
+      const updated = { ...item, done: ev.target.checked };
+      const ok = await addShopItem(updated);
+      if (!ok) { ev.target.checked = item.done; alert('Konnte nicht synchronisiert werden — Verbindung prüfen.'); return; }
+      renderShopList();
+    };
+    div.querySelector('.edit-btn').onclick = () => fillShopForm(item);
+    div.querySelector('.delete-btn').onclick = async () => {
+      if (!confirm('Diese Anschaffung wirklich von der Liste löschen?')) return;
+      const ok = await deleteShopItem(item.id);
+      if (!ok) alert('Löschen konnte nicht mit dem Google Sheet synchronisiert werden.');
+      renderShopList();
+    };
+    list.appendChild(div);
+  });
+}
+
+let editingShopId = null;
+let editingShopCreated = null;
+let editingShopDate = null;
+
+function resetShopForm() {
+  editingShopId = null;
+  editingShopCreated = null;
+  editingShopDate = null;
+  document.getElementById('shopItem').value = '';
+  document.getElementById('shopNote').value = '';
+  document.getElementById('shopAuthor').value = '';
+  document.getElementById('shopSubmit').textContent = 'Zur Liste hinzufügen';
+  document.getElementById('shopCancelEdit').style.display = 'none';
+}
+
+function fillShopForm(item) {
+  editingShopId = item.id;
+  editingShopCreated = item.created;
+  editingShopDate = item.date;
+  document.getElementById('shopItem').value = item.text || '';
+  document.getElementById('shopNote').value = item.note || '';
+  document.getElementById('shopAuthor').value = item.author || '';
+  document.getElementById('shopSubmit').textContent = 'Änderung speichern';
+  document.getElementById('shopCancelEdit').style.display = 'inline-block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('shopCancelEdit').onclick = () => {
+  resetShopForm();
+  showSaveStatus(document.getElementById('shopSaveStatus'), '', '');
+};
+
+document.getElementById('shopSubmit').onclick = async () => {
+  const btn = document.getElementById('shopSubmit');
+  const statusEl = document.getElementById('shopSaveStatus');
+  if (btn.disabled) return;
+  const text = document.getElementById('shopItem').value.trim();
+  const note = document.getElementById('shopNote').value.trim();
+  const author = document.getElementById('shopAuthor').value.trim();
+  if (!text) { alert('Bitte eintragen, was gebraucht wird.'); return; }
+  btn.disabled = true;
+  showSaveStatus(statusEl, 'saving', 'Speichert …');
+  const existingDone = editingShopId ? (await getShopItems()).find(x => x.id === editingShopId) : null;
+  const item = {
+    id: editingShopId || ('s' + Date.now() + '-' + Math.random().toString(36).slice(2,7)),
+    text, note, author,
+    done: existingDone ? !!existingDone.done : false,
+    date: editingShopId ? editingShopDate : todayStr(),
+    created: editingShopId ? editingShopCreated : Date.now(),
+    updated: editingShopId ? Date.now() : undefined
+  };
+  const ok = await addShopItem(item);
+  btn.disabled = false;
+  if (ok) {
+    showSaveStatus(statusEl, 'ok', editingShopId ? '✓ Aktualisiert' : '✓ Hinzugefügt');
+    resetShopForm();
+  } else {
+    showSaveStatus(statusEl, 'error', 'Nicht gespeichert — Verbindung prüfen und nochmal versuchen');
+  }
+  renderShopList();
+};
+
+let editingInfoId = null;
+let editingInfoCreated = null;
+let editingInfoDate = null;
+let editingInfoReactions = null;
+let editingInfoComments = null;
+let mediaRecorder = null;
+let recordedChunks = [];
+let recordingTimerInterval = null;
+let recordingSeconds = 0;
+let voiceDataUrl = null; // frisch aufgenommene, noch nicht gespeicherte Aufnahme (als data: URL)
+let voiceRemoved = false; // true = bestehende Aufnahme beim Speichern entfernen
+let editingInfoOldAudioFileId = null;
+
+function formatTimer(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${String(s).padStart(2,'0')}`;
+}
+
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recordedChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = (ev) => { if (ev.data.size > 0) recordedChunks.push(ev.data); };
+    mediaRecorder.onstop = async () => {
+      stream.getTracks().forEach(t => t.stop());
+      const blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+      const reader = new FileReader();
+      reader.onload = () => {
+        voiceDataUrl = reader.result;
+        voiceRemoved = false;
+        const frame = document.getElementById('voicePreviewFrame');
+        frame.remove(); // durch echtes <audio> ersetzen für die lokale Vorschau vor dem Hochladen
+        const audio = document.createElement('audio');
+        audio.id = 'voicePreviewFrame';
+        audio.className = 'voice-player';
+        audio.controls = true;
+        audio.src = voiceDataUrl;
+        document.getElementById('voicePreview').prepend(audio);
+        document.getElementById('voicePreview').style.display = 'block';
+      };
+      reader.readAsDataURL(blob);
+    };
+    mediaRecorder.start();
+    recordingSeconds = 0;
+    document.getElementById('voiceTimer').textContent = '0:00';
+    document.getElementById('voiceTimer').style.display = 'inline';
+    document.getElementById('voiceRecordBtn').style.display = 'none';
+    document.getElementById('voiceStopBtn').style.display = 'inline-block';
+    recordingTimerInterval = setInterval(() => {
+      recordingSeconds++;
+      document.getElementById('voiceTimer').textContent = formatTimer(recordingSeconds);
+      if (recordingSeconds >= 120) stopRecording(); // Sicherheitsgrenze: max. 2 Minuten
+    }, 1000);
+  } catch (err) {
+    alert('Mikrofon konnte nicht verwendet werden. Bitte Zugriff im Browser erlauben, oder einen anderen Browser probieren.');
+  }
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+  clearInterval(recordingTimerInterval);
+  document.getElementById('voiceTimer').style.display = 'none';
+  document.getElementById('voiceStopBtn').style.display = 'none';
+  document.getElementById('voiceRecordBtn').style.display = 'inline-block';
+}
+
+function resetVoiceUI() {
+  voiceDataUrl = null;
+  voiceRemoved = false;
+  editingInfoOldAudioFileId = null;
+  document.getElementById('voicePreview').style.display = 'none';
+  const old = document.getElementById('voicePreviewFrame');
+  if (old) old.remove();
+  const frame = document.createElement('iframe');
+  frame.id = 'voicePreviewFrame';
+  frame.className = 'voice-frame';
+  frame.allow = 'autoplay';
+  document.getElementById('voicePreview').prepend(frame);
+}
+
+function resetInfoForm() {
+  editingInfoId = null;
+  editingInfoCreated = null;
+  editingInfoDate = null;
+  editingInfoReactions = null;
+  editingInfoComments = null;
+  document.getElementById('infoText').value = '';
+  document.getElementById('infoAuthor').value = '';
+  document.getElementById('infoSubmit').textContent = 'Hinweis anpinnen';
+  document.getElementById('infoCancelEdit').style.display = 'none';
+  resetVoiceUI();
+}
+
+async function fillInfoForm(e) {
+  editingInfoId = e.id;
+  editingInfoCreated = e.created;
+  editingInfoDate = e.date;
+  editingInfoReactions = e.reactions;
+  editingInfoComments = e.comments;
+  document.getElementById('infoText').value = e.text || '';
+  document.getElementById('infoAuthor').value = e.author || '';
+  document.getElementById('infoSubmit').textContent = 'Änderung speichern';
+  document.getElementById('infoCancelEdit').style.display = 'inline-block';
+  resetVoiceUI();
+  if (e.hasAudio) {
+    editingInfoOldAudioFileId = await storageGet(`infoaudio:${e.id}`);
+    if (editingInfoOldAudioFileId) {
+      document.getElementById('voicePreviewFrame').src = `https://drive.google.com/file/d/${editingInfoOldAudioFileId}/preview`;
+      document.getElementById('voicePreview').style.display = 'block';
+    }
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('voiceRecordBtn').onclick = () => startRecording();
+document.getElementById('voiceStopBtn').onclick = () => stopRecording();
+document.getElementById('voiceRemoveBtn').onclick = () => {
+  voiceRemoved = true;
+  voiceDataUrl = null;
+  document.getElementById('voicePreview').style.display = 'none';
+};
+
+document.getElementById('infoCancelEdit').onclick = () => {
+  resetInfoForm();
+  showSaveStatus(document.getElementById('infoSaveStatus'), '', '');
+};
+
+document.getElementById('infoSubmit').onclick = async () => {
+  const btn = document.getElementById('infoSubmit');
+  const statusEl = document.getElementById('infoSaveStatus');
+  if (btn.disabled) return;
+  const text = document.getElementById('infoText').value.trim();
+  const author = document.getElementById('infoAuthor').value.trim();
+  if (!text) { alert('Bitte einen Hinweistext eingeben.'); return; }
+  btn.disabled = true;
+  showSaveStatus(statusEl, 'saving', 'Speichert …');
+  const infoId = editingInfoId || ('i' + Date.now() + '-' + Math.random().toString(36).slice(2,7));
+
+  let hasAudio = editingInfoId ? !!editingInfoOldAudioFileId : false; // Ausgangslage: bestehende Aufnahme bleibt, außer entfernt/ersetzt
+  let audioOk = true;
+
+  if (voiceDataUrl) {
+    const uploadResult = await uploadPhotoToDrive(voiceDataUrl); // generisch, funktioniert auch für Audio
+    audioOk = uploadResult.ok;
+    if (audioOk) {
+      await storageSet(`infoaudio:${infoId}`, uploadResult.fileId);
+      hasAudio = true;
+      if (editingInfoOldAudioFileId) await deletePhotoFromDrive(editingInfoOldAudioFileId);
+    }
+  } else if (voiceRemoved && editingInfoOldAudioFileId) {
+    await deletePhotoFromDrive(editingInfoOldAudioFileId);
+    await storageDelete(`infoaudio:${infoId}`);
+    hasAudio = false;
+  }
+
+  const info = {
+    id: infoId,
+    text, author, hasAudio,
+    date: editingInfoId ? editingInfoDate : todayStr(),
+    created: editingInfoId ? editingInfoCreated : Date.now(),
+    updated: editingInfoId ? Date.now() : undefined,
+    reactions: editingInfoId ? editingInfoReactions : undefined,
+    comments: editingInfoId ? editingInfoComments : undefined
+  };
+  const ok = await addInfo(info); // überschreibt bei gleicher ID den bestehenden Hinweis
+  btn.disabled = false;
+  if (ok) {
+    showSaveStatus(statusEl, 'ok', !audioOk ? '✓ Gespeichert (Sprachmemo konnte nicht mitgespeichert werden)' : (editingInfoId ? '✓ Aktualisiert' : '✓ Angepinnt'));
+    resetInfoForm();
+  } else {
+    showSaveStatus(statusEl, 'error', 'Nicht gespeichert — Verbindung prüfen und nochmal versuchen');
+  }
+  renderInfoList();
+};
+
+/* ---------- Navigation ---------- */
+document.getElementById('openBewegung').onclick = async () => { await renderList('bewegung'); showScreen('listScreen'); };
+document.getElementById('openWeekTable').onclick = async () => { tableWeekOffset = 0; await renderWeekTable(); showScreen('weekTableScreen'); };
+document.getElementById('weekTableBackBtn').onclick = async () => { await renderList('bewegung'); showScreen('listScreen'); };
+document.getElementById('openGesundheit').onclick = async () => { await renderList('gesundheit'); showScreen('listScreen'); };
+document.getElementById('openInfos').onclick = async () => {
+  resetInfoForm();
+  resetShopForm();
+  await renderInfoList();
+  await renderShopList();
+  showScreen('infosScreen');
+};
+document.getElementById('listBackBtn').onclick = async () => { await renderHome(); showScreen('homeScreen'); };
+document.getElementById('manageBtn').onclick = () => { renderPonyManage(); showScreen('manageScreen'); };
+document.getElementById('refreshBtn').onclick = async () => { await refreshAllData(); await renderHome(); };
+document.getElementById('manageBackBtn').onclick = async () => { await renderHome(); showScreen('homeScreen'); };
+document.getElementById('infosBackBtn').onclick = async () => { await renderHome(); showScreen('homeScreen'); };
+document.getElementById('belDetailBackBtn').onclick = async () => { await renderList('bewegung'); showScreen('listScreen'); };
+document.getElementById('gesDetailBackBtn').onclick = async () => { await renderList('gesundheit'); showScreen('listScreen'); };
+
+let gesPhotoDataUrl = null;
+let gesPhotoRemoved = false; // true = bestehendes Foto beim Speichern entfernen
+let editingGesId = null;
+let editingGesCreated = null;
+let editingGesAckFields = null; // acknowledged/acknowledgedBy/acknowledgedAt bleiben beim Bearbeiten erhalten
+let editingGesOldPhotoFileId = null; // falls beim Bearbeiten ein Foto ersetzt/entfernt wird
+let gesRolleVal = null;
+let gesDurationVal = 'ack'; // 'ack' = bis gesehen (Standard), sonst Anzahl Tage als String
+
+document.getElementById('gesRolle').querySelectorAll('.chip').forEach(chip => {
+  chip.onclick = () => {
+    document.getElementById('gesRolle').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    gesRolleVal = chip.dataset.val;
+    document.getElementById('gesDurationSection').style.display = gesRolleVal === 'Pferdeteam' ? 'block' : 'none';
+  };
+});
+document.getElementById('gesDuration').querySelectorAll('.chip').forEach(chip => {
+  chip.onclick = () => {
+    document.getElementById('gesDuration').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    gesDurationVal = chip.dataset.val;
+  };
+});
+document.getElementById('gesPhotoInput').onchange = async () => {
+  const input = document.getElementById('gesPhotoInput');
+  const file = input.files[0];
+  if (!file) return;
+  input.disabled = true;
+  gesPhotoDataUrl = await resizeImageFile(file, 900, 0.82); // Drive statt Sheet-Zelle — kein enges Größenlimit mehr
+  gesPhotoRemoved = false;
+  input.disabled = false;
+  const preview = document.getElementById('gesPhotoPreview');
+  preview.src = gesPhotoDataUrl;
+  preview.style.display = 'block';
+  document.getElementById('gesPhotoRemove').style.display = 'inline-block';
+};
+document.getElementById('gesPhotoRemove').onclick = () => {
+  gesPhotoDataUrl = null;
+  gesPhotoRemoved = true;
+  document.getElementById('gesPhotoInput').value = '';
+  document.getElementById('gesPhotoPreview').style.display = 'none';
+  document.getElementById('gesPhotoRemove').style.display = 'none';
+};
+
+document.getElementById('gesCancelEdit').onclick = () => {
+  resetGesForm();
+  showSaveStatus(document.getElementById('gesSaveStatus'), '', '');
+};
+
+document.getElementById('belCancelEdit').onclick = () => {
+  resetQuickForm();
+  showSaveStatus(document.getElementById('belSaveStatus'), '', '');
+};
+
+document.getElementById('toggleExtra').onclick = () => {
+  document.getElementById('extraFields').classList.toggle('open');
+};
+
+document.getElementById('belKontext').querySelectorAll('.chip').forEach(chip => {
+  chip.onclick = () => {
+    document.getElementById('belKontext').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    belKontextVal = chip.dataset.val;
+    const gruppeSection = document.getElementById('belGruppeSection');
+    if (belKontextVal === 'Ponygruppen') {
+      gruppeSection.style.display = 'block';
+    } else {
+      gruppeSection.style.display = 'none';
+      belGruppeVal = null;
+      document.getElementById('belGruppeChips').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    }
+  };
+});
+
+document.getElementById('belGruppeChips').querySelectorAll('.chip').forEach(chip => {
+  chip.onclick = () => {
+    document.getElementById('belGruppeChips').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    belGruppeVal = chip.dataset.val;
+  };
+});
+
+document.getElementById('belAktivitaet').querySelectorAll('.chip').forEach(chip => {
+  chip.onclick = () => {
+    const val = chip.dataset.val;
+    if (belAktivitaetVal.has(val)) {
+      belAktivitaetVal.delete(val);
+      chip.classList.remove('selected');
+    } else {
+      belAktivitaetVal.add(val);
+      chip.classList.add('selected');
+    }
+  };
+});
+
+document.getElementById('belOrt').querySelectorAll('.chip').forEach(chip => {
+  chip.onclick = () => {
+    document.getElementById('belOrt').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    belOrtVal = chip.dataset.val;
+  };
+});
+
+document.getElementById('belScale').querySelectorAll('.scale-btn').forEach(btn => {
+  btn.onclick = () => {
+    document.getElementById('belScale').querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    belScaleVal = btn.dataset.val;
+  };
+});
+
+document.getElementById('belSubmit').onclick = async () => {
+  const btn = document.getElementById('belSubmit');
+  const statusEl = document.getElementById('belSaveStatus');
+  if (btn.disabled) return; // Doppel-Klick-Schutz
+  const date = document.getElementById('belDate').value || todayStr();
+  const gruppe = belKontextVal === 'Ponygruppen' ? (belGruppeVal || '') : '';
+  const note = document.getElementById('belNote').value.trim();
+  const author = document.getElementById('belAuthor').value.trim();
+  if (!belKontextVal) { alert('Bitte einen Kontext wählen: Ehrenamt, Ponygruppen, Therapiereiten oder Bildungsprojekt.'); return; }
+  if (belKontextVal === 'Ponygruppen' && !belGruppeVal) { alert('Bitte eine Ponygruppe wählen.'); return; }
+  if (belAktivitaetVal.size === 0) { alert('Bitte mindestens Geführt oder Geritten wählen.'); return; }
+  if (!belScaleVal) { alert('Bitte eine Anstrengungsstufe (1-5) auswählen.'); return; }
+  btn.disabled = true;
+  showSaveStatus(statusEl, 'saving', 'Speichert …');
+  const entry = {
+    id: editingBelId || ('e' + Date.now() + '-' + Math.random().toString(36).slice(2,7)),
+    date, gruppe, note, author,
+    kontext: belKontextVal,
+    aktivitaet: Array.from(belAktivitaetVal),
+    ort: belOrtVal,
+    value: parseInt(belScaleVal),
+    created: editingBelId ? editingBelCreated : Date.now(),
+    updated: editingBelId ? Date.now() : undefined
+  };
+  const ok = await addEntry('belastung', activePonyId, entry); // addEntry überschreibt bei gleicher ID den bestehenden Eintrag
+  btn.disabled = false;
+  if (ok) {
+    showSaveStatus(statusEl, 'ok', editingBelId ? '✓ Aktualisiert' : '✓ Gespeichert');
+    resetQuickForm();
+  } else {
+    showSaveStatus(statusEl, 'error', 'Nicht gespeichert — Verbindung prüfen und nochmal versuchen');
+  }
+  renderBelastungList();
+};
+
+document.getElementById('gesSubmit').onclick = async () => {
+  const btn = document.getElementById('gesSubmit');
+  const statusEl = document.getElementById('gesSaveStatus');
+  if (btn.disabled) return;
+  const date = document.getElementById('gesDate').value || todayStr();
+  const note = document.getElementById('gesNote').value.trim();
+  const author = document.getElementById('gesAuthor').value.trim();
+  if (!gesRolleVal) { alert('Bitte wählen: Eingetragen als Pferdeteam oder Ehrenamt.'); return; }
+  if (!note) { alert('Bitte einen Status oder ein Update eintragen.'); return; }
+  btn.disabled = true;
+  showSaveStatus(statusEl, 'saving', 'Speichert …');
+  const entryId = editingGesId || ('e' + Date.now() + '-' + Math.random().toString(36).slice(2,7));
+
+  let hasPhoto = !editingGesId ? false : !!editingGesOldPhotoFileId; // Ausgangslage: bestehendes Foto bleibt, außer es wird entfernt/ersetzt
+  let photoOk = true;
+
+  if (gesPhotoDataUrl) {
+    // neues oder ersetztes Foto hochladen; ein evtl. altes zuerst/danach aus Drive entfernen
+    const photoResult = await saveGesPhoto(entryId, gesPhotoDataUrl);
+    photoOk = photoResult.ok;
+    hasPhoto = photoOk;
+    if (photoOk && editingGesOldPhotoFileId) await deletePhotoFromDrive(editingGesOldPhotoFileId);
+  } else if (gesPhotoRemoved && editingGesOldPhotoFileId) {
+    // Foto wurde beim Bearbeiten explizit entfernt, kein Ersatz gewählt
+    await deletePhotoFromDrive(editingGesOldPhotoFileId);
+    await storageDelete(`gesphoto:${entryId}`);
+    hasPhoto = false;
+  }
+
+  const entry = {
+    id: entryId, date, note, author, hasPhoto,
+    rolle: gesRolleVal,
+    visibleDays: (gesRolleVal === 'Pferdeteam' && gesDurationVal !== 'ack') ? parseInt(gesDurationVal) : null,
+    created: editingGesId ? editingGesCreated : Date.now(),
+    updated: editingGesId ? Date.now() : undefined,
+    acknowledged: editingGesId && editingGesAckFields ? editingGesAckFields.acknowledged : false,
+    acknowledgedBy: editingGesId && editingGesAckFields ? editingGesAckFields.acknowledgedBy : undefined,
+    acknowledgedAt: editingGesId && editingGesAckFields ? editingGesAckFields.acknowledgedAt : undefined,
+    reactions: editingGesId && editingGesAckFields ? editingGesAckFields.reactions : undefined,
+    comments: editingGesId && editingGesAckFields ? editingGesAckFields.comments : undefined
+  };
+  const ok = await addEntry('gesundheit', activePonyId, entry); // überschreibt bei gleicher ID den bestehenden Eintrag
+  btn.disabled = false;
+  if (ok) {
+    showSaveStatus(statusEl, 'ok', !photoOk ? '✓ Gespeichert (Foto konnte nicht mitgespeichert werden)' : (editingGesId ? '✓ Aktualisiert' : '✓ Gespeichert'));
+    resetGesForm();
+  } else {
+    showSaveStatus(statusEl, 'error', 'Nicht gespeichert — Verbindung prüfen und nochmal versuchen');
+  }
+  renderGesundheitList();
+};
+
+// Einmalige, automatische Migration: alte Daten lagen als eine Zelle pro Pony
+// (ganze Liste als JSON) statt als einzelne Schlüssel pro Eintrag. Zieht alte
+// Funde beim ersten Laden nach dem Update automatisch um.
+async function migrateOldData() {
+  for (const p of ponies) {
+    for (const kind of ['belastung', 'gesundheit']) {
+      const oldKey = `${kind}:${p.id}`;
+      if (Object.prototype.hasOwnProperty.call(cache, oldKey)) {
+        try {
+          const oldEntries = JSON.parse(cache[oldKey]);
+          if (Array.isArray(oldEntries)) {
+            for (const entry of oldEntries) {
+              if (!entry.id) entry.id = 'e' + Date.now() + '-' + Math.random().toString(36).slice(2,7);
+              await storageSet(`${kind}:${p.id}:${entry.id}`, JSON.stringify(entry));
+            }
+          }
+        } catch(e) { /* beschädigte Altdaten überspringen */ }
+        await storageDelete(oldKey);
+      }
+    }
+  }
+  if (Object.prototype.hasOwnProperty.call(cache, 'allgemeine-infos')) {
+    try {
+      const oldInfos = JSON.parse(cache['allgemeine-infos']);
+      if (Array.isArray(oldInfos)) {
+        for (const info of oldInfos) {
+          if (!info.id) info.id = 'i' + Date.now() + '-' + Math.random().toString(36).slice(2,7);
+          await storageSet(`info:${info.id}`, JSON.stringify(info));
+        }
+      }
+    } catch(e) { /* beschädigte Altdaten überspringen */ }
+    await storageDelete('allgemeine-infos');
+  }
+
+  // Alte Fotos lagen noch als komplette Bilddaten direkt im Sheet (Text beginnt mit
+  // "data:image..."). Die werden jetzt einmalig nach Google Drive hochgeladen und
+  // im Sheet nur noch durch die kurze Drive-Datei-ID ersetzt.
+  for (const key of Object.keys(cache)) {
+    const isPhotoKey = key.indexOf('photo:') === 0 || key.indexOf('gesphoto:') === 0;
+    if (isPhotoKey && typeof cache[key] === 'string' && cache[key].indexOf('data:image') === 0) {
+      const upload = await uploadPhotoToDrive(cache[key]);
+      if (upload.ok) {
+        await storageSet(key, upload.fileId);
+      }
+    }
+  }
+}
+
+async function init() {
+  try {
+    await loadAllData();
+    await loadPonies();
+    await migrateOldData();
+    await renderHome();
+    updateSyncStatus();
+    document.getElementById('loading').style.display = 'none';
+    if (storageBroken) {
+      const warn = document.createElement('div');
+      warn.className = 'warn-banner';
+      warn.textContent = 'Hinweis: Das Google Sheet war gerade nicht erreichbar. Einträge werden nur für diese Sitzung gespeichert.';
+      document.getElementById('homeScreen').prepend(warn);
+    }
+    showScreen('homeScreen');
+  } catch (err) {
+    document.getElementById('loading').innerHTML =
+      '<div style="color:#8B3A32;">Die App konnte nicht geladen werden.<br><span style="font-size:12px;">' +
+      (err && err.message ? err.message.replace(/</g,'&lt;') : 'Unbekannter Fehler') + '</span></div>';
+  }
+}
+init();
+</script>
+
+</body>
+</html>
