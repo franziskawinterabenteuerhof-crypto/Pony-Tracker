@@ -15,51 +15,51 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #F0F2F5;
-    --surface: #FFFFFF;
-    --surface-alt: #F6F7F9;
-    --border: #E1E5EA;
-    --border-strong: #C6CCD4;
-    --text: #12161D;
-    --text-secondary: #565F6D;
-    --text-tertiary: #868FA0;
+    :root {
+          --bg: #F5F6F1;
+          --surface: #FFFFFF;
+          --surface-alt: #F1F3EB;
+          --border: #E3E6DC;
+          --border-strong: #C9CFBC;
+          --text: #2B2E22;
+          --text-secondary: #5C6350;
+          --text-tertiary: #8A9078;
 
-    --navy: #1A2E4C;
-    --navy-hover: #12213A;
-    --navy-tint: #E7EBF3;
-    --navy-light: #33507A;
+          --navy: #6E9A34;
+          --navy-hover: #587D29;
+          --navy-tint: #EBF1DD;
+          --navy-light: #8FB552;
 
-    --teal: #146560;
-    --teal-tint: #DEEEEC;
+          --teal: #1B5D6B;
+          --teal-tint: #DEEBEE;
 
-    --brick: #8A362E;
-    --brick-tint: #F4E3E0;
+          --brick: #8A362E;
+          --brick-tint: #F4E3E0;
 
-    --amber: #8C5E17;
-    --amber-tint: #F5E9D1;
+          --amber: #C1571F;
+          --amber-tint: #F7E6DA;
 
-    --slate: #454E5C;
-    --slate-tint: #E7E9EC;
+          --slate: #565E4C;
+          --slate-tint: #E9EBE3;
 
-    --s1: #2A7D52;
-    --s2: #698A46;
-    --s3: #A9822A;
-    --s4: #B36329;
-    --s5: #8A362E;
+          --s1: #598A2E;
+          --s2: #7A9A3E;
+          --s3: #B3872A;
+          --s4: #C1571F;
+          --s5: #8A362E;
 
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
+          --radius-sm: 8px;
+          --radius-md: 12px;
+          --radius-lg: 20px;
 
-    --shadow-xs: 0 1px 2px rgba(18, 22, 29, 0.04);
-    --shadow-sm: 0 1px 3px rgba(18, 22, 29, 0.06), 0 1px 2px rgba(18, 22, 29, 0.04);
-    --shadow-md: 0 4px 12px rgba(18, 22, 29, 0.08), 0 2px 4px rgba(18, 22, 29, 0.05);
-    --shadow-lg: 0 12px 32px rgba(18, 22, 29, 0.14), 0 4px 10px rgba(18, 22, 29, 0.07);
+          --shadow-xs: 0 1px 2px rgba(43, 46, 34, 0.05);
+          --shadow-sm: 0 1px 3px rgba(43, 46, 34, 0.07);
+          --shadow-md: 0 3px 10px rgba(43, 46, 34, 0.08);
+          --shadow-lg: 0 8px 24px rgba(43, 46, 34, 0.12);
 
-    --font-display: 'Inter', -apple-system, "Segoe UI", sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, "SF Mono", monospace;
-  }
+          --font-display: 'Inter', -apple-system, "Segoe UI", sans-serif;
+          --font-mono: 'IBM Plex Mono', ui-monospace, "SF Mono", monospace;
+    }
   * { box-sizing: border-box; }
   html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   body {
@@ -74,11 +74,11 @@
 
   /* ---------- Top bar ---------- */
   .topbar {
-    background: linear-gradient(155deg, var(--navy) 0%, var(--navy-hover) 100%);
+    background: var(--navy);
     color: #fff;
     padding: 22px 18px 20px 18px;
     margin-bottom: 22px;
-    box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-sm);
     position: relative;
   }
   .topbar::after {
@@ -94,7 +94,7 @@
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #91A6C2;
+    color: #C9E2A0;
     margin-bottom: 7px;
     font-weight: 600;
   }
@@ -106,7 +106,7 @@
   }
   .topbar .sub {
     font-size: 12.5px;
-    color: #AEBED6;
+    color: #DCEAC0;
     margin-top: 4px;
     font-weight: 500;
   }
@@ -216,18 +216,19 @@
   .save-status.error { color: var(--brick); }
 
   /* ---------- Section label ---------- */
-  .section-label {
-    font-family: var(--font-display);
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin: 26px 0 10px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+    .section-label {
+          font-family: var(--font-display);
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          color: var(--amber);
+          margin: 26px 0 10px 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+    }
+
   .section-label::after {
     content: '';
     flex: 1;
