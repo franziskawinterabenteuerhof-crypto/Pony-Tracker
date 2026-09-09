@@ -881,6 +881,17 @@
 
 <div id="loading" class="loading">Lade Daten …</div>
 
+    <div id="roleGateScreen" style="display:none;">
+          <div class="card" style="text-align:center; padding:32px 24px;">
+                  <div style="font-size:38px; margin-bottom:10px;">🐴</div>
+                  <div class="detail-header" style="margin-bottom:6px;">Wer bist du?</div>
+                  <div class="detail-sub" style="margin-bottom:22px;">Wähle deinen Bereich, um fortzufahren</div>
+                  <button class="submit-btn" id="roleTeamBtn" style="margin-bottom:12px;">Ich bin im Pferdeteam</button>
+                  <button class="submit-btn" id="roleHelferBtn" style="background:var(--teal);">Ich bin ehrenamtlich</button>
+          </div>
+    </div>
+    
+
 <!-- HOME -->
 <div id="homeScreen" style="display:none;">
   <div id="teamAlertBanner"></div>
@@ -927,8 +938,17 @@
       </div>
       <div class="folder-chevron">›</div>
     </div>
+      <div class="folder-row" id="openKalender" style="cursor:pointer;">
+            <div class="folder-mark" style="background:var(--teal-tint);">📅</div>
+            <div class="folder-body">
+                    <div class="folder-title">Kalender</div>
+                    <div class="folder-sub">Termine, Hufpflege, Ferien — öffnet in neuem Tab</div>
+            </div>
+            <div class="folder-chevron">↗</div>
+      </div>
   </div>
   <button class="manage-link" id="manageBtn">Ponys verwalten — umbenennen / hinzufügen</button>
+    <button class="toggle-details" id="switchRoleBtn" style="width:100%; text-align:center; margin-top:14px;">Rolle wechseln</button>
 </div>
 
 <!-- LIST -->
@@ -2509,6 +2529,10 @@ document.getElementById('openInfos').onclick = async () => {
   await renderShopList();
   showScreen('infosScreen');
 };
+    document.getElementById('openKalender').onclick = () => {
+          const url = getRole() === 'pferdeteam' ? 'https://kalender.digital/c2293dbb422655abfc91' : 'https://kalender.digital/f8fb4f88c81cef15eb50';
+          window.open(url, '_blank');
+    }};
 document.getElementById('listBackBtn').onclick = async () => { await renderHome(); showScreen('homeScreen'); };
 document.getElementById('manageBtn').onclick = () => { renderPonyManage(); showScreen('manageScreen'); };
 document.getElementById('refreshBtn').onclick = async () => { await refreshAllData(); await renderHome(); };
@@ -2764,28 +2788,74 @@ async function migrateOldData() {
   }
 }
 
-async function init() {
-  try {
-    await loadAllData();
-    await loadPonies();
-    await migrateOldData();
-    await renderHome();
-    updateSyncStatus();
-    document.getElementById('loading').style.display = 'none';
-    if (storageBroken) {
-      const warn = document.createElement('div');
-      warn.className = 'warn-banner';
-      warn.textContent = 'Hinweis: Das Google Sheet war gerade nicht erreichbar. Einträge werden nur für diese Sitzung gespeichert.';
-      document.getElementById('homeScreen').prepend(warn);
+function getRole() { return localStorage.getItem('ponyUserRole'); }
+    function setRole(r) { localStorage.setItem('ponyUserRole', r); }
+
+    function applyRoleRestrictions() {
+          const role = getRole();
+          const shopSection = document.getElementById('shopSection');
+          if (shopSection) shopSection.style.display = (role === 'ehrenamt') ? 'none' : 'block';
+          const teamChip = document.getElementById('gesRolleTeamChip');
+          if (teamChip) teamChip.style.display = (role === 'ehrenamt') ? 'none' : 'block';
+          document.body.classList.toggle('role-ehrenamt-mode', role === 'ehrenamt');
     }
-    showScreen('homeScreen');
-  } catch (err) {
-    document.getElementById('loading').innerHTML =
-      '<div style="color:#8B3A32;">Die App konnte nicht geladen werden.<br><span style="font-size:12px;">' +
-      (err && err.message ? err.message.replace(/</g,'&lt;') : 'Unbekannter Fehler') + '</span></div>';
-  }
-}
-init();
+
+    async function proceedAfterRole() {
+          try {
+                  await loadAllData();
+                  await loadPonies();
+                  await migrateOldData();
+                  await renderHome();
+                  updateSyncStatus();
+                  document.getElementById('loading').style.display = 'none';
+                  if (storageBroken) {
+                            const warn = document.createElement('div');
+                            warn.className = 'warn-banner';
+                            warn.textContent = 'Hinweis: Das Google Sheet war gerade nicht erreichbar. Einträge werden nur für diese Sitzung gespeichert.';
+                            document.getElementById('homeScreen').prepend(warn);
+                  }
+                  showScreen('homeScreen');
+          } catch (err) {
+                  document.getElementById('loading').innerHTML =
+                            '<div style="color:#8B3A32;">Die App konnte nicht geladen werden.<br><span style="font-size:12px;">' +
+                            (err && err.message ? err.message.replace(/</g,'&lt;') : 'Unbekannter Fehler') + '</span></div>';
+          }
+    }
+
+    const ROLE_CODES = { pferdeteam: 'TEAM2026', ehrenamt: 'HELFER2026' };
+
+    function tryRoleLogin(role) {
+          const label = role === 'pferdeteam' ? 'Pferdeteam' : 'Ehrenamtliche';
+          const code = prompt('Code für ' + label + ':');
+          if (code === null) return;
+          if (code.trim().toUpperCase() === ROLE_CODES[role]) {
+                  setRole(role);
+                  document.getElementById('roleGateScreen').style.display = 'none';
+                  document.getElementById('loading').style.display = 'block';
+                  applyRoleRestrictions();
+                  proceedAfterRole();
+          } else {
+                  alert('Falscher Code. Bitte nochmal versuchen.');
+          }
+    }
+    document.getElementById('roleTeamBtn').onclick = () => tryRoleLogin('pferdeteam');
+    document.getElementById('roleHelferBtn').onclick = () => tryRoleLogin('ehrenamt');
+    document.getElementById('switchRoleBtn').onclick = () => {
+          if (!confirm('Rolle wechseln? Du musst dich danach neu mit einem Code anmelden.')) return;
+          localStorage.removeItem('ponyUserRole');
+          location.reload();
+    };
+
+    async function init() {
+          if (!getRole()) {
+                  document.getElementById('loading').style.display = 'none';
+                  document.getElementById('roleGateScreen').style.display = 'block';
+                  return;
+          }
+          applyRoleRestrictions();
+          await proceedAfterRole();
+    }
+    }init();
 </script>
 
 </body>
